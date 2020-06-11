@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MyBatis," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="MyBatis 编程步骤 创建 SqlSessionFactory 对象 通过 SqlSessionFactory 获取 SqlSession 对象 通过 SqlSession 获得 Mapper 代理对象 执行成功，则使用 SqlSession 提交事务 执行失败，则使用 SqlSession 回滚事务 最终，关闭会话">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis-知识汇总">
+<meta property="og:url" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="邂逅文森特">
+<meta property="og:description" content="MyBatis 编程步骤 创建 SqlSessionFactory 对象 通过 SqlSessionFactory 获取 SqlSession 对象 通过 SqlSession 获得 Mapper 代理对象 执行成功，则使用 SqlSession 提交事务 执行失败，则使用 SqlSession 回滚事务 最终，关闭会话">
+<meta property="og:image" content="https://zhuhb5.github.io/.io//01.png">
+<meta property="og:image" content="https://zhuhb5.github.io/.io//02.png">
+<meta property="og:image" content="https://zhuhb5.github.io/.io//03.png">
+<meta property="og:image" content="https://zhuhb5.github.io/.io//04.png">
+<meta property="og:image" content="https://zhuhb5.github.io/.io//05.png">
+<meta property="article:published_time" content="2020-06-05T07:50:37.000Z">
+<meta property="article:modified_time" content="2020-06-10T08:28:21.768Z">
+<meta property="article:author" content="Vincent">
+<meta property="article:tag" content="MyBatis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhuhb5.github.io/.io//01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhuhb5.github.io/2020/06/05/MyBatis-知识汇总/"/>
+
+
+
+
+
+  <title>MyBatis-知识汇总 | 邂逅文森特</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="邂逅文森特" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">邂逅文森特</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">zhuhb5.github.io</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vincent">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邂逅文森特">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MyBatis-知识汇总</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T15:50:37+08:00">
+                2020-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MyBatis/" itemprop="url" rel="index">
+                    <span itemprop="name">MyBatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" class="leancloud_visitors" data-flag-title="MyBatis-知识汇总">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  23 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="MyBatis-编程步骤"><a href="#MyBatis-编程步骤" class="headerlink" title="MyBatis 编程步骤"></a>MyBatis 编程步骤</h3><ol>
+<li>创建 SqlSessionFactory 对象</li>
+<li>通过 SqlSessionFactory 获取 SqlSession 对象</li>
+<li>通过 SqlSession 获得 Mapper 代理对象</li>
+<li>执行成功，则使用 SqlSession 提交事务</li>
+<li>执行失败，则使用 SqlSession 回滚事务</li>
+<li>最终，关闭会话<a id="more"></a>
+
+</li>
+</ol>
+<h3 id="和-的区别是什么？"><a href="#和-的区别是什么？" class="headerlink" title="#{}和 ${} 的区别是什么？"></a><font color="green">#{}</font>和 <font color="green">${}</font> 的区别是什么？</h3><ul>
+<li>${} 是Properties 文件中的变量占位符，它可以用于XML标签属性值和SQL内部，属于字符串替换。例如将 ${driver} 会被静态替换为 <font color="green">com.mysql.jdbc.driver</font><figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"UNPOOLED"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;driver&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;url&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;username&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>/&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
+<li>${} 也可以对传递进来的参数原样拼接在 SQL 中。代码如下：<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">select</span> id="getSubject3" parameterType="Integer" resultType="Subject"&gt;</span><br><span class="line">    <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> subject</span><br><span class="line">    <span class="keyword">WHERE</span> id = $&#123;id&#125;</span><br><span class="line">&lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
+实际场景下，不推荐这么做。因为，可能有 SQL 注入的风险。</li>
+<li>#{} 是 SQL 的参数占位符，Mybatis 会将 SQL 中的 #{} 替换为 ? 号，在 SQL 执行前会使用 PreparedStatement 的参数设置方法，按序给 SQL 的 ? 号占位符设置参数值，比如 ps.setInt(0, parameterValue) 。 所以，#{} 是预编译处理，可以有效防止 SQL 注入，提高系统安全性。</li>
+<li>另外，#{} 和 ${} 的取值方式非常方便。例如：#{item.name} 的取值方式，为使用反射从参数对象中，获取 item 对象的 name 属性值，相当于 param.getItem().getName() 。</li>
+</ul>
+<h3 id="当实体类中的属性名和表中的字段名不一样-，怎么办？"><a href="#当实体类中的属性名和表中的字段名不一样-，怎么办？" class="headerlink" title="当实体类中的属性名和表中的字段名不一样 ，怎么办？"></a>当实体类中的属性名和表中的字段名不一样 ，怎么办？</h3><ul>
+<li><p>第一种， 通过在查询的 SQL 语句中定义字段名的别名，让字段名的别名和实体类的属性名一致。代码如下：</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">select</span> id=<span class="string">"selectOrder"</span> parameterType=<span class="string">"Integer"</span> resultType=<span class="string">"Order"</span>&gt; </span><br><span class="line">    <span class="keyword">SELECT</span> order_id <span class="keyword">AS</span> id, order_no <span class="keyword">AS</span> orderno, order_price <span class="keyword">AS</span> price </span><br><span class="line">    <span class="keyword">FROM</span> orders </span><br><span class="line">    <span class="keyword">WHERE</span> order_id = <span class="meta">#&#123;id&#125;</span></span><br><span class="line">&lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>这里，还有几点建议：<br>1、数据库的关键字，统一使用大写，例如：SELECT、AS、FROM、WHERE 。<br>2、每 5 个查询字段换一行，保持整齐。<br>3、, 的后面，和 = 的前后，需要有空格，更加清晰。<br>4、SELECT、FROM、WHERE 等，单独一行，高端大气。</p>
+</li>
+<li><p>第二种，是第一种的特殊情况。大多数场景下，数据库字段名和实体类中的属性名差，主要是前者为 <strong>下划线风格</strong>，后者为<strong>驼峰风格</strong>。在这种情况下，可以直接配置如下，实现自动的下划线转驼峰的功能。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;setting <span class="type">name</span>="logImpl" <span class="keyword">value</span>="LOG4J"/&gt;</span><br><span class="line">    &lt;setting <span class="type">name</span>="mapUnderscoreToCamelCase" <span class="keyword">value</span>="true" /&gt;</span><br><span class="line">&lt;/settings&gt;</span><br></pre></td></tr></table></figure>
+<p>也就说，约定大于配置。非常推荐！</p>
+</li>
+<li><p>第三种，通过 <resultMap> 来映射字段名和实体类属性名的一一对应的关系。代码如下：</resultMap></p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;resultMap type=<span class="string">"me.gacl.domain.Order"</span> <span class="built_in">id</span>=”OrderResultMap”&gt; </span><br><span class="line">    &lt;!–- 用 <span class="built_in">id</span> 属性来映射主键字段 -–&gt; </span><br><span class="line">    &lt;<span class="built_in">id</span> <span class="keyword">property</span>=<span class="string">"id"</span> column=<span class="string">"order_id"</span>&gt; </span><br><span class="line">    &lt;!–- 用 <span class="literal">result</span> 属性来映射非主键字段，<span class="keyword">property</span> 为实体类属性名，column 为数据表中的属性 -–&gt; </span><br><span class="line">    &lt;<span class="literal">result</span> <span class="keyword">property</span>=<span class="string">"orderNo"</span> column =<span class="string">"order_no"</span> /&gt; </span><br><span class="line">    &lt;<span class="literal">result</span> <span class="keyword">property</span>=<span class="string">"price"</span> column=<span class="string">"order_price"</span> /&gt; </span><br><span class="line">&lt;/resultMap&gt;</span><br><span class="line"></span><br><span class="line">&lt;select <span class="built_in">id</span>=<span class="string">"getOrder"</span> parameterType=<span class="string">"Integer"</span> resultMap=<span class="string">"OrderResultMap"</span>&gt;</span><br><span class="line">    SELECT * </span><br><span class="line">    FROM orders </span><br><span class="line">    WHERE order_id = <span class="comment">#&#123;id&#125;</span></span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p><em>此处 SELECT * 仅仅作为示例只用，实际场景下，千万千万千万不要这么干。用多少字段，查询多少字段。*</em>  </p>
+</li>
+</ul>
+<h3 id="XML-映射文件中，除了常见的-select-insert-update-delete标-签之外，还有哪些标签？"><a href="#XML-映射文件中，除了常见的-select-insert-update-delete标-签之外，还有哪些标签？" class="headerlink" title="XML 映射文件中，除了常见的 select | insert | update | delete标 签之外，还有哪些标签？"></a>XML 映射文件中，除了常见的 select | insert | update | delete标 签之外，还有哪些标签？</h3><p><code>&lt;cache /&gt; 标签，给定命名空间的缓存配置。</code><br><code>&lt;cache-ref /&gt; 标签，其他命名空间缓存配置的引用。</code><br><code>&lt;resultMap &gt; 标签，是最复杂也是最强大的元素，用来描述如何从数据库结果集中来加载对象。</code><br><code>&lt;parameterMap /&gt; 标签，已废弃！老式风格的参数映射。内联参数是首选,这个元素可能在将来被移除，这里不会记录。</code><br><code>&lt;sql /&gt; 标签，可被其他语句引用的可重用语句块。</code><br><code>&lt;include /&gt; 标签，引用 &lt;sql /&gt; 标签的语句。</code><br><code>&lt;selectKey /&gt; 标签，不支持自增的主键生成策略标签。</code><br><code>&lt;if /&gt;</code><br><code>&lt;choose /&gt;、&lt;when /&gt;、&lt;otherwise /&gt;</code><br><code>&lt;trim /&gt;、&lt;where /&gt;、&lt;set /&gt;</code><br><code>&lt;foreach /&gt;</code><br><code>&lt;bind /&gt;</code><br>请参考 <a href="https://mybatis.org/mybatis-3/zh/sqlmap-xml.html" target="_blank" rel="noopener">MyBatis 官方文档</a></p>
+<h3 id="Mybatis-动态-SQL-是做什么的？都有哪些动态-SQL-？能简述一下动态-SQL-的执行原理吗？"><a href="#Mybatis-动态-SQL-是做什么的？都有哪些动态-SQL-？能简述一下动态-SQL-的执行原理吗？" class="headerlink" title="Mybatis 动态 SQL 是做什么的？都有哪些动态 SQL ？能简述一下动态 SQL 的执行原理吗？"></a>Mybatis 动态 SQL 是做什么的？都有哪些动态 SQL ？能简述一下动态 SQL 的执行原理吗？</h3><p><code>Mybatis 动态 SQL ，可以让我们在 XML 映射文件内，以 XML 标签的形式编写动态 SQL ，完成逻辑判断和动态拼接 SQL 的功能。</code><br><code>Mybatis 提供了 9 种动态 SQL 标签：&lt;if /&gt;、&lt;choose /&gt;、&lt;when /&gt;、&lt;otherwise /&gt;、&lt;trim /&gt;、&lt;where /&gt;、&lt;set /&gt;、&lt;foreach /&gt;、&lt;bind /&gt; 。</code><br><code>其执行原理为，使用 OGNL 的表达式，从 SQL 参数对象中计算表达式的值，根据表达式的值动态拼接 SQL ，以此来完成动态 SQL 的功能。</code></p>
+<p>如上的内容，更加详细的话，请看 <a href="https://mybatis.org/mybatis-3/zh/dynamic-sql.html" target="_blank" rel="noopener">《MyBatis 文档 —— 动态 SQL》</a> 文档。</p>
+<h3 id="最佳实践中，通常一个-XML-映射文件，都会写一个-Mapper-接口与之对应。请问，这个-Mapper-接口的工作原理是什么？Mapper-接口里的方法，参数不同时，方法能重载吗？"><a href="#最佳实践中，通常一个-XML-映射文件，都会写一个-Mapper-接口与之对应。请问，这个-Mapper-接口的工作原理是什么？Mapper-接口里的方法，参数不同时，方法能重载吗？" class="headerlink" title="最佳实践中，通常一个 XML 映射文件，都会写一个 Mapper 接口与之对应。请问，这个 Mapper 接口的工作原理是什么？Mapper 接口里的方法，参数不同时，方法能重载吗？"></a>最佳实践中，通常一个 XML 映射文件，都会写一个 Mapper 接口与之对应。请问，这个 Mapper 接口的工作原理是什么？Mapper 接口里的方法，参数不同时，方法能重载吗？</h3><p>Mapper 接口，对应的关系如下：</p>
+<ul>
+<li>接口的全限名，就是映射文件中的 “namespace” 的值。</li>
+<li>接口的方法名，就是映射文件中 MappedStatement 的 “id” 值。</li>
+<li>接口方法内的参数，就是传递给 SQL 的参数。<br>Mapper 接口是没有实现类的，当调用接口方法时，接口全限名 + 方法名拼接字符串作为 key 值，可唯一定位一个对应的 MappedStatement 。举例：com.mybatis3.mappers.StudentDao.findStudentById ，可以唯一找到 “namespace” 为 com.mybatis3.mappers.StudentDao 下面 “id” 为 findStudentById 的 MappedStatement 。</li>
+</ul>
+<p><code>总结来说，在 Mybatis 中，每一个 &lt;select /&gt;、&lt;insert /&gt;、&lt;update /&gt;、&lt;delete /&gt; 标签，都会被解析为一个 MappedStatement 对象。另外，Mapper 接口的实现类，通过 MyBatis 使用 JDK Proxy 自动生成其代理对象 Proxy ，而代理对象 Proxy 会拦截接口方法，从而“调用”对应的 MappedStatement 方法，最终执行 SQL ，返回执行结果。整体流程如下图：</code></p>
+<p><img src="/.io//01.png" alt="01"></p>
+<ul>
+<li>其中，SqlSession 在调用 Executor 之前，会获得对应的 MappedStatement 方法。例如：DefaultSqlSession#select(String statement, Object parameter, RowBounds rowBounds, ResultHandler handler) 方法，代码如下：</li>
+</ul>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DefaultSqlSession.java</span></span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void select(String statement, Object parameter, RowBounds rowBounds, ResultHandler handler) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 获得 MappedStatement 对象</span></span><br><span class="line">        MappedStatement ms = configuration.get<span class="constructor">MappedStatement(<span class="params">statement</span>)</span>;</span><br><span class="line">        <span class="comment">// 执行查询</span></span><br><span class="line">        executor.query(ms, wrap<span class="constructor">Collection(<span class="params">parameter</span>)</span>, rowBounds, handler);</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        throw <span class="module-access"><span class="module"><span class="identifier">ExceptionFactory</span>.</span></span>wrap<span class="constructor">Exception(<span class="string">"Error querying database.  Cause: "</span> + <span class="params">e</span>, <span class="params">e</span>)</span>;</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">ErrorContext</span>.</span></span>instance<span class="literal">()</span>.reset<span class="literal">()</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Mapper 接口里的方法，是不能重载的，因为是全限名 + 方法名的保存和寻找策略。</li>
+</ul>
+<h3 id="Mapper-接口绑定有几种实现方式，分别是怎么实现的"><a href="#Mapper-接口绑定有几种实现方式，分别是怎么实现的" class="headerlink" title="Mapper 接口绑定有几种实现方式，分别是怎么实现的?"></a>Mapper 接口绑定有几种实现方式，分别是怎么实现的?</h3><p>接口绑定有三种实现方式：</p>
+<ul>
+<li>第一种，通过 XML Mapper 里面写 SQL 来绑定。在这种情况下，要指定 XML 映射文件里面的 “namespace” 必须为接口的全路径名。</li>
+<li>第二种，通过注解绑定，就是在接口的方法上面加上 @Select、@Update、@Insert、@Delete 注解，里面包含 SQL 语句来绑定。</li>
+<li>第三种，是第二种的特例，也是通过注解绑定，在接口的方法上面加上 @SelectProvider、@UpdateProvider、@InsertProvider、@DeleteProvider 注解，通过 Java 代码，生成对应的动态 SQL。<br><code>实际场景下，最最最推荐的是第一种方式。因为，SQL 通过注解写在 Java 代码中，会非常杂乱。而写在 XML 中，更加有整体性，并且可以更加方便的使用 OGNL 表达式。</code></li>
+</ul>
+<h3 id="Mybatis-的-XML-Mapper文件中，不同的-XML-映射文件，id-是否可以重复？"><a href="#Mybatis-的-XML-Mapper文件中，不同的-XML-映射文件，id-是否可以重复？" class="headerlink" title="Mybatis 的 XML Mapper文件中，不同的 XML 映射文件，id 是否可以重复？"></a>Mybatis 的 XML Mapper文件中，不同的 XML 映射文件，id 是否可以重复？</h3><p>不同的 XML Mapper 文件，如果配置了 “namespace” ，那么 id 可以重复；如果没有配置 “namespace” ，那么 id 不能重复。毕竟”namespace” 不是必须的，只是最佳实践而已。</p>
+<p>原因就是，namespace + id 是作为 Map&lt;String, MappedStatement&gt; 的 key 使用的。如果没有 “namespace”，就剩下 id ，那么 id 重复会导致数据互相覆盖。如果有了 “namespace”，自然 id 就可以重复，”namespace”不同，namespace + id 自然也就不同。</p>
+<h3 id="如何获取自动生成的-主-键值"><a href="#如何获取自动生成的-主-键值" class="headerlink" title="如何获取自动生成的(主)键值?"></a>如何获取自动生成的(主)键值?</h3><p>不同的数据库，获取自动生成的(主)键值的方式是不同的。</p>
+<p><code>MySQL 有两种方式，但是自增主键，代码如下：</code></p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 方式一，使用 useGeneratedKeys + keyProperty 属性</span><br><span class="line">&lt;<span class="keyword">insert</span> id="insert" parameterType="Person" useGeneratedKeys="true" keyProperty="id"&gt;</span><br><span class="line">    <span class="keyword">INSERT</span> <span class="keyword">INTO</span> person(<span class="type">name</span>, pswd)</span><br><span class="line">    <span class="keyword">VALUE</span> (#&#123;<span class="type">name</span>&#125;, #&#123;pswd&#125;)</span><br><span class="line">&lt;/<span class="keyword">insert</span>&gt;</span><br><span class="line">    </span><br><span class="line">// 方式二，使用 `&lt;selectKey /&gt;` 标签</span><br><span class="line">&lt;<span class="keyword">insert</span> id="insert" parameterType="Person"&gt;</span><br><span class="line">    &lt;selectKey keyProperty="id" resultType="long" <span class="keyword">order</span>="AFTER"&gt;</span><br><span class="line">        <span class="keyword">SELECT</span> LAST_INSERT_ID()</span><br><span class="line">    &lt;/selectKey&gt;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">INSERT</span> <span class="keyword">INTO</span> person(<span class="type">name</span>, pswd)</span><br><span class="line">    <span class="keyword">VALUE</span> (#&#123;<span class="type">name</span>&#125;, #&#123;pswd&#125;)</span><br><span class="line">&lt;/<span class="keyword">insert</span>&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中，方式一较为常用。</li>
+</ul>
+<p><code>Oracle 有两种方式，序列和触发器。基于序列，根据 &lt;selectKey /&gt; 执行的时机，也有两种方式，代码如下：</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个是创建表的自增序列</span></span><br><span class="line">CREATE SEQUENCE student_sequence</span><br><span class="line">INCREMENT BY <span class="number">1</span></span><br><span class="line">NOMAXVALUE</span><br><span class="line">NOCYCLE</span><br><span class="line">CACHE <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<p>// 方式一，使用 <code>&lt;selectKey /&gt;</code> 标签 + BEFORE</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=<span class="string">"add"</span> parameterType=<span class="string">"Student"</span>&gt;</span><br><span class="line">　　&lt;selectKey keyProperty=<span class="string">"student_id"</span> resultType=<span class="string">"int"</span> order=<span class="string">"BEFORE"</span>&gt;</span><br><span class="line">      select student_sequence.nextval FROM dual</span><br><span class="line">    &lt;/selectKey&gt;</span><br><span class="line">    </span><br><span class="line">     <span class="function">INSERT INTO <span class="title">student</span><span class="params">(student_id, student_name, student_age)</span></span></span><br><span class="line"><span class="function">     <span class="title">VALUES</span> <span class="params">(#&#123;student_id&#125;,#&#123;student_name&#125;,#&#123;student_age&#125;)</span></span></span><br><span class="line"><span class="function">&lt;/insert&gt;</span></span><br><span class="line"><span class="function">```java</span></span><br><span class="line"><span class="function"><span class="comment">// 方式二，使用 `&lt;selectKey /&gt;` 标签 + AFTER</span></span></span><br><span class="line"><span class="function">&lt;insert id</span>=<span class="string">"save"</span> parameterType=<span class="string">"com.threeti.to.ZoneTO"</span> &gt;</span><br><span class="line">    &lt;selectKey resultType=<span class="string">"java.lang.Long"</span> keyProperty=<span class="string">"id"</span> order=<span class="string">"AFTER"</span> &gt;</span><br><span class="line">      SELECT SEQ_ZONE.CURRVAL AS id FROM dual</span><br><span class="line">    &lt;/selectKey&gt;</span><br><span class="line">    </span><br><span class="line">    <span class="function">INSERT INTO <span class="title">TBL_ZONE</span> <span class="params">(ID, NAME )</span> </span></span><br><span class="line"><span class="function">    <span class="title">VALUES</span> <span class="params">(SEQ_ZONE.NEXTVAL, #&#123;name,jdbcType=VARCHAR&#125;)</span></span></span><br><span class="line"><span class="function">&lt;/insert&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Mybatis-执行批量插入，能返回数据库主键列表吗？"><a href="#Mybatis-执行批量插入，能返回数据库主键列表吗？" class="headerlink" title="Mybatis 执行批量插入，能返回数据库主键列表吗？"></a>Mybatis 执行批量插入，能返回数据库主键列表吗？</h3><p>能<br>升级Mybatis版本到3.3.1。官方在这个版本中加入了批量新增返回主键id的功能<br>mapper.xml层代码</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!-- 批量新增 --&gt;</span>  </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"batchInsert"</span> <span class="attr">parameterType</span>=<span class="string">"java.util.List"</span> <span class="attr">useGeneratedKeys</span>=<span class="string">"true"</span> <span class="attr">keyProperty</span>=<span class="string">"id"</span> &gt;</span>  </span></span><br><span class="line"><span class="xml">    INSERT INTO  </span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">"t_shop_resource"</span> /&gt;</span>  </span></span><br><span class="line"><span class="xml">    (relation_id, summary_id, relation_type)  </span></span><br><span class="line"><span class="xml">    VALUES  </span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">item</span>=<span class="string">"shopResource"</span> <span class="attr">separator</span>=<span class="string">","</span>&gt;</span>  </span></span><br><span class="line"><span class="xml">        (  </span></span><br><span class="line"><span class="xml">            #</span><span class="template-variable">&#123;shopResource.relationId&#125;</span><span class="xml">, #</span><span class="template-variable">&#123;shopResource.summaryId&#125;</span><span class="xml">, #</span><span class="template-variable">&#123;shopResource.relationType&#125;</span><span class="xml">  </span></span><br><span class="line"><span class="xml">        )  </span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;ShopResource&gt; batchinsertCallId(List&lt;ShopResource&gt; shopResourceList)&#123;  </span><br><span class="line">    <span class="keyword">this</span>.getSqlSession().insert(getStatement(SQL_BATCH_INSERT_CALL_ID), shopResourceList);  </span><br><span class="line">    <span class="keyword">return</span> shopResourceList;<span class="comment">// 重点介绍  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在mybatis3.3.1中，虽然加入了批量新增返回主键id的功能，但是它是这样运行的，在需要新增插入新元素集合对象时，它会需要参数对象，当执行完插入操作后，给之前的参数对象设置id值，也就是改变了需要插入对象集合中的元素的属性id值， 所以接收返回时，返回方法形参参数即可，同样的地址引用改变了内容，返回后的集合也是改变后的集合。</p>
+<h3 id="在-Mapper-中如何传递多个参数"><a href="#在-Mapper-中如何传递多个参数" class="headerlink" title="在 Mapper 中如何传递多个参数?"></a>在 Mapper 中如何传递多个参数?</h3><ul>
+<li><p>第一种，使用 Map 集合，装载多个参数进行传递。代码如下：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 调用方法</span></span><br><span class="line">Map&lt;<span class="keyword">String</span>, Object&gt; <span class="built_in">map</span> = <span class="keyword">new</span> HashMap();</span><br><span class="line"><span class="built_in">map</span>.<span class="built_in">put</span>(<span class="string">"start"</span>, start);</span><br><span class="line"><span class="built_in">map</span>.<span class="built_in">put</span>(<span class="string">"end"</span>, <span class="built_in">end</span>);</span><br><span class="line"><span class="keyword">return</span> studentMapper.selectStudents(<span class="built_in">map</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Mapper 接口</span></span><br><span class="line"><span class="function">List&lt;Student&gt; <span class="title">selectStudents</span><span class="params">(Map&lt;<span class="keyword">String</span>, Object&gt; <span class="built_in">map</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Mapper XML 代码</span></span><br><span class="line">&lt;select id=<span class="string">"selectStudents"</span> parameterType=<span class="string">"Map"</span> resultType=<span class="string">"Student"</span>&gt;</span><br><span class="line">    SELECT * </span><br><span class="line">    FROM students </span><br><span class="line">    LIMIT #&#123;start&#125;, #&#123;<span class="built_in">end</span>&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>显然，这不是一种优雅的方式。</strong></p>
+</li>
+<li><p>第二种，保持传递多个参数，使用 @Param 注解。代码如下：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 调用方法</span><br><span class="line"><span class="keyword">return</span> studentMapper.selectStudents(<span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">// Mapper 接口</span><br><span class="line">List&lt;Student&gt; selectStudents(@Param("start") <span class="type">Integer</span> <span class="keyword">start</span>, @Param("end") <span class="type">Integer</span> <span class="keyword">end</span>);</span><br><span class="line"></span><br><span class="line">// Mapper <span class="type">XML</span> 代码</span><br><span class="line">&lt;<span class="keyword">select</span> id="selectStudents" resultType="Student"&gt;</span><br><span class="line">    <span class="keyword">SELECT</span> * </span><br><span class="line">    <span class="keyword">FROM</span> students </span><br><span class="line">    <span class="keyword">LIMIT</span> #&#123;<span class="keyword">start</span>&#125;, #&#123;<span class="keyword">end</span>&#125;</span><br><span class="line">&lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>推荐使用这种方式。</strong> </p>
+</li>
+<li><p>第三种，保持传递多个参数，不使用 @Param 注解。代码如下：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 调用方法</span><br><span class="line"><span class="keyword">return</span> studentMapper.selectStudents(<span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">// Mapper 接口</span><br><span class="line">List&lt;Student&gt; selectStudents(<span class="type">Integer</span> <span class="keyword">start</span>, <span class="type">Integer</span> <span class="keyword">end</span>);</span><br><span class="line"></span><br><span class="line">// Mapper <span class="type">XML</span> 代码</span><br><span class="line">&lt;<span class="keyword">select</span> id="selectStudents" resultType="Student"&gt;</span><br><span class="line">    <span class="keyword">SELECT</span> * </span><br><span class="line">    <span class="keyword">FROM</span> students </span><br><span class="line">    <span class="keyword">LIMIT</span> #&#123;param1&#125;, #&#123;param2&#125;</span><br><span class="line">&lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>其中，按照参数在方法方法中的位置，从 1 开始，逐个为 #{param1}、#{param2}、#{param3} 不断向下。</strong></p>
+</li>
+</ul>
+<h3 id="Mybatis-是否可以映射-Enum-枚举类？"><a href="#Mybatis-是否可以映射-Enum-枚举类？" class="headerlink" title="Mybatis 是否可以映射 Enum 枚举类？"></a>Mybatis 是否可以映射 Enum 枚举类？</h3><p>Mybatis 可以映射枚举类，对应的实现类为 EnumTypeHandler 或 EnumOrdinalTypeHandler 。</p>
+<p>EnumTypeHandler ，基于 Enum.name 属性( String )。默认。<br>EnumOrdinalTypeHandler ，基于 Enum.ordinal 属性( int )。可通过 <setting name="defaultEnumTypeHandler" value="EnumOrdinalTypeHandler"> 来设置。<br>当然，实际开发场景，我们很少使用 Enum 类型，更加的方式是，代码如下：</setting></p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">Dog</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> static <span class="keyword">final</span> <span class="built_in">int</span> STATUS_GOOD = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> static <span class="keyword">final</span> <span class="built_in">int</span> STATUS_BETTER = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">public</span> static <span class="keyword">final</span> <span class="built_in">int</span> STATUS_BEST = <span class="number">3</span>；</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">int</span> status;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>并且，不单可以映射枚举类，Mybatis 可以映射任何对象到表的一列上。映射方式为自定义一个 TypeHandler 类，实现 TypeHandler 的#setParameter(…) 和 #getResult(…) 接口方法。</p>
+<p>TypeHandler 有两个作用：</p>
+<p>一是，完成从 javaType 至 jdbcType 的转换。<br>二是，完成 jdbcType 至 javaType 的转换。<br>具体体现为 #setParameter(…) 和 #getResult(..) 两个方法，分别代表设置 SQL 问号占位符参数和获取列查询结果。</p>
+<h3 id="Mybatis-都有哪些-Executor-执行器？它们之间的区别是什么？"><a href="#Mybatis-都有哪些-Executor-执行器？它们之间的区别是什么？" class="headerlink" title="Mybatis 都有哪些 Executor 执行器？它们之间的区别是什么？"></a>Mybatis 都有哪些 Executor 执行器？它们之间的区别是什么？</h3><p>Mybatis 有四种 Executor 执行器，分别是 SimpleExecutor、ReuseExecutor、BatchExecutor、CachingExecutor 。</p>
+<p>SimpleExecutor ：每执行一次 update 或 select 操作，就创建一个 Statement 对象，用完立刻关闭 Statement 对象。<br>ReuseExecutor ：执行 update 或 select 操作，以 SQL 作为key 查找缓存的 Statement 对象，存在就使用，不存在就创建；用完后，不关闭 Statement 对象，而是放置于缓存 Map&lt;String, Statement&gt; 内，供下一次使用。简言之，就是重复使用 Statement 对象。<br>BatchExecutor ：执行 update 操作（没有 select 操作，因为 JDBC 批处理不支持 select 操作），将所有 SQL 都添加到批处理中（通过 addBatch 方法），等待统一执行（使用 executeBatch 方法）。它缓存了多个 Statement 对象，每个 Statement 对象都是调用 addBatch 方法完毕后，等待一次执行 executeBatch 批处理。实际上，整个过程与 JDBC 批处理是相同。<br>CachingExecutor ：在上述的三个执行器之上，增加二级缓存的功能。</p>
+<p><code>通过设置 &lt;setting name=&quot;defaultExecutorType&quot; value=&quot;&quot;&gt; 的 &quot;value&quot; 属性，可传入 SIMPLE、REUSE、BATCH 三个值，分别使用 SimpleExecutor、ReuseExecutor、BatchExecutor 执行器。</code></p>
+<p><code>通过设置 &lt;setting name=&quot;cacheEnabled&quot; value=&quot;&quot; 的 &quot;value&quot; 属性为 true 时，创建 CachingExecutor 执行器。</code></p>
+<h3 id="MyBatis-如何执行批量插入"><a href="#MyBatis-如何执行批量插入" class="headerlink" title="MyBatis 如何执行批量插入?"></a>MyBatis 如何执行批量插入?</h3><p>首先，在 Mapper XML 编写一个简单的 Insert 语句。代码如下：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">insert</span> id="insertUser" parameterType="String"&gt; </span><br><span class="line">    <span class="keyword">INSERT</span> <span class="keyword">INTO</span> users(<span class="type">name</span>) </span><br><span class="line">    <span class="keyword">VALUES</span> (#&#123;<span class="keyword">value</span>&#125;) </span><br><span class="line">&lt;/<span class="keyword">insert</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>然后，然后在对应的 Mapper 接口中，编写映射的方法。代码如下：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">public</span> <span class="selector-tag">interface</span> <span class="selector-tag">UserMapper</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="selector-tag">void</span> <span class="selector-tag">insertUser</span>(<span class="variable">@Param</span>(<span class="string">"name"</span>) String name);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后，调用该 Mapper 接口方法。代码如下：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> SqlSessionFactory sqlSessionFactory;</span><br><span class="line"></span><br><span class="line">@Test</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> testBatch() &#123;</span><br><span class="line">    <span class="comment">// 创建要插入的用户的名字的数组</span></span><br><span class="line">    List&lt;<span class="keyword">String</span>&gt; names = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    names.<span class="built_in">add</span>(<span class="string">"占小狼"</span>);</span><br><span class="line">    names.<span class="built_in">add</span>(<span class="string">"朱小厮"</span>);</span><br><span class="line">    names.<span class="built_in">add</span>(<span class="string">"徐妈"</span>);</span><br><span class="line">    names.<span class="built_in">add</span>(<span class="string">"飞哥"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获得执行器类型为 Batch 的 SqlSession 对象，并且 autoCommit = false ，禁止事务自动提交</span></span><br><span class="line">    <span class="keyword">try</span> (SqlSession session = sqlSessionFactory.openSession(ExecutorType.BATCH, <span class="keyword">false</span>)) &#123;</span><br><span class="line">        <span class="comment">// 获得 Mapper 对象</span></span><br><span class="line">        UserMapper mapper = session.getMapper(UserMapper.class);</span><br><span class="line">        <span class="comment">// 循环插入</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">String</span> name : names) &#123;</span><br><span class="line">            mapper.insertUser(name);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 提交批量操作</span></span><br><span class="line">        session.commit();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>还有另一种方式，代码如下：<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO [<span class="string">表名</span>](<span class="link">[列名],[列名]</span>) </span><br><span class="line">VALUES</span><br><span class="line">([列值],[列值])),</span><br><span class="line">([列值],[列值])),</span><br><span class="line">([列值],[列值]));</span><br></pre></td></tr></table></figure>
+对于这种方式，需要保证单条 SQL 不超过语句的最大限制 max_allowed_packet 大小，默认为 1 M 。<br>这两种方式的性能对比，可以看看 <a href="https://www.jianshu.com/p/cce617be9f9e" target="_blank" rel="noopener">《[实验]mybatis批量插入方式的比较》 </a>。</li>
+</ul>
+<h3 id="介绍-MyBatis-的一级缓存和二级缓存的概念和实现原理？"><a href="#介绍-MyBatis-的一级缓存和二级缓存的概念和实现原理？" class="headerlink" title="介绍 MyBatis 的一级缓存和二级缓存的概念和实现原理？"></a>介绍 MyBatis 的一级缓存和二级缓存的概念和实现原理？</h3><h3 id="Mybatis-是否支持延迟加载？如果支持，它的实现原理是什么？"><a href="#Mybatis-是否支持延迟加载？如果支持，它的实现原理是什么？" class="headerlink" title="Mybatis 是否支持延迟加载？如果支持，它的实现原理是什么？"></a>Mybatis 是否支持延迟加载？如果支持，它的实现原理是什么？</h3><p>Mybatis 仅支持 association 关联对象和 collection 关联集合对象的延迟加载。其中，association 指的就是一对一，collection 指的就是一对多查询。</p>
+<p>在 Mybatis 配置文件中，可以配置 <setting name="lazyLoadingEnabled" value="true"> 来启用延迟加载的功能。默认情况下，延迟加载的功能是关闭的。</setting></p>
+<p>它的原理是，使用 CGLIB 或 Javassist( 默认 ) 创建目标对象的代理对象。当调用代理对象的延迟加载属性的 getting 方法时，进入拦截器方法。比如调用 a.getB().getName() 方法，进入拦截器的 invoke(…) 方法，发现 a.getB() 需要延迟加载时，那么就会单独发送事先保存好的查询关联 B 对象的 SQL ，把 B 查询上来，然后调用a.setB(b) 方法，于是 a 对象 b 属性就有值了，接着完成a.getB().getName() 方法的调用。这就是延迟加载的基本原理。</p>
+<p>当然了，不光是 Mybatis，几乎所有的包括 Hibernate 在内，支持延迟加载的原理都是一样的。</p>
+<h3 id="Mybatis-能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"><a href="#Mybatis-能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。" class="headerlink" title="Mybatis 能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"></a>Mybatis 能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。</h3><p>能，Mybatis 不仅可以执行一对一、一对多的关联查询，还可以执行多对一，多对多的关联查询。</p>
+<ul>
+<li><p>一对多<br>用户级联文章在JavaBean中的编写方式,这就是一对多在JavaBean中的配置<br><img src="/.io//02.png" alt="02.png"><br>Mybatis的Mapper该如何编写一对多?很简单,就是在resultMap标签中配置<collection>标签,用来存储查询到的文章列表,注意posts代表的是用户实体的文章List集合<br><img src="/.io//03.png" alt="03.png"></collection></p>
+</li>
+<li><p>多对一<br>文章级联用户在JavaBean中的编写方式,这是多对一在JavaBean中的配置<br><img src="/.io//04.png" alt="04.png"><br>Mybatis的Mapper该如何编写多对一?很简单,就是在resultMap标签中配置<association></association>标签关联所属的用户实体<br><img src="/.io//05.png" alt="05.png"></p>
+</li>
+</ul>
+<h3 id="简述-Mybatis-的插件运行原理？以及如何编写一个插件？"><a href="#简述-Mybatis-的插件运行原理？以及如何编写一个插件？" class="headerlink" title="简述 Mybatis 的插件运行原理？以及如何编写一个插件？"></a>简述 Mybatis 的插件运行原理？以及如何编写一个插件？</h3><p>Mybatis 仅可以编写针对 ParameterHandler、ResultSetHandler、StatementHandler、Executor 这 4 种接口的插件。</p>
+<p>Mybatis 使用 JDK 的动态代理，为需要拦截的接口生成代理对象以实现接口方法拦截功能，每当执行这 4 种接口对象的方法时，就会进入拦截方法，具体就是 InvocationHandler 的 #invoke(…)方法。当然，只会拦截那些你指定需要拦截的方法。</p>
+<p>编写一个 MyBatis 插件的步骤如下：</p>
+<ul>
+<li>首先，实现 Mybatis 的 Interceptor 接口，并实现 #intercept(…) 方法。</li>
+<li>然后，在给插件编写注解，指定要拦截哪一个接口的哪些方法即可</li>
+<li>最后，在配置文件中配置你编写的插件。</li>
+</ul>
+<h3 id="简述-Mybatis-的插件运行原理？以及如何编写一个插件？-1"><a href="#简述-Mybatis-的插件运行原理？以及如何编写一个插件？-1" class="headerlink" title="简述 Mybatis 的插件运行原理？以及如何编写一个插件？"></a>简述 Mybatis 的插件运行原理？以及如何编写一个插件？</h3><p>Mybatis 使用 RowBounds 对象进行分页，它是针对 ResultSet 结果集执行的内存分页，而非数据库分页。<br>所以，实际场景下，不适合直接使用 MyBatis 原有的 RowBounds 对象进行分页。而是使用如下两种方案：</p>
+<p>在 SQL 内直接书写带有数据库分页的参数来完成数据库分页功能<br>也可以使用分页插件来完成数据库分页。<br>这两者都是基于数据库分页，差别在于前者是工程师手动编写分页条件，后者是插件自动添加分页条件。</p>
+<p>分页插件的基本原理是使用 Mybatis 提供的插件接口，实现自定义分页插件。在插件的拦截方法内，拦截待执行的 SQL ，然后重写 SQL ，根据dialect 方言，添加对应的物理分页语句和物理分页参数。</p>
+<p>举例：SELECT * FROM student ，拦截 SQL 后重写为：select * FROM student LIMI 0，10 。</p>
+<h3 id="MyBatis-与-Hibernate-有哪些不同？"><a href="#MyBatis-与-Hibernate-有哪些不同？" class="headerlink" title="MyBatis 与 Hibernate 有哪些不同？"></a>MyBatis 与 Hibernate 有哪些不同？</h3><ul>
+<li>hibernate是全自动，而mybatis是半自动<br>hibernate完全可以通过对象关系模型实现对数据库的操作，拥有完整的JavaBean对象与数据库的映射结构来自动生成sql。而mybatis仅有基本的字段映射，对象数据以及对象实际关系仍然需要通过手写sql来实现和管理。</li>
+<li>hibernate数据库移植性远大于mybatis<br>hibernate通过它强大的映射结构和hql语言，大大降低了对象与数据库（oracle、mysql等）的耦合性，而mybatis由于需要手写sql，因此与数据库的耦合性直接取决于程序员写sql的方法，如果sql不具通用性而用了很多某数据库特性的sql语句的话，移植性也会随之降低很多，成本很高。</li>
+<li>hibernate拥有完整的日志系统，mybatis则欠缺一些<br>hibernate日志系统非常健全，涉及广泛，包括：sql记录、关系异常、优化警告、缓存提示、脏数据警告等；而mybatis则除了基本记录功能外，功能薄弱很多。</li>
+<li>mybatis相比hibernate需要关心很多细节<br>hibernate配置要比mybatis复杂的多，学习成本也比mybatis高。但也正因为mybatis使用简单，才导致它要比hibernate关心很多技术细节。mybatis由于不用考虑很多细节，开发模式上与传统jdbc区别很小，因此很容易上手并开发项目，但忽略细节会导致项目前期bug较多，因而开发出相对稳定的软件很慢，而开发出软件却很快。hibernate则正好与之相反。但是如果使用hibernate很熟练的话，实际上开发效率丝毫不差于甚至超越mybatis。</li>
+<li>sql直接优化上，mybatis要比hibernate方便很多<br>由于mybatis的sql都是写在xml里，因此优化sql比hibernate方便很多。而hibernate的sql很多都是自动生成的，无法直接维护sql；虽有hql，但功能还是不及sql强大，见到报表等变态需求时，hql也歇菜，也就是说hql是有局限的；hibernate虽然也支持原生sql，但开发模式上却与orm不同，需要转换思维，因此使用上不是非常方便。总之写sql的灵活度上hibernate不及mybatis。</li>
+</ul>
+<h3 id="JDBC-编程有哪些不足之处，MyBatis是如何解决这些问题的？"><a href="#JDBC-编程有哪些不足之处，MyBatis是如何解决这些问题的？" class="headerlink" title="JDBC 编程有哪些不足之处，MyBatis是如何解决这些问题的？"></a>JDBC 编程有哪些不足之处，MyBatis是如何解决这些问题的？</h3><p>问题一：SQL 语句写在代码中造成代码不易维护，且代码会比较混乱。<br>解决方式：将 SQL 语句配置在 Mapper XML 文件中，与 Java 代码分离。</p>
+<p>问题二：根据参数不同，拼接不同的 SQL 语句非常麻烦。例如 SQL 语句的 WHERE 条件不一定，可能多也可能少，占位符需要和参数一一对应。<br>解决方式：MyBatis 提供 <where>、<if> 等等动态语句所需要的标签，并支持 OGNL 表达式，简化了动态 SQL 拼接的代码，提升了开发效率。</if></where></p>
+<p>问题三，对结果集解析麻烦，SQL 变化可能导致解析代码变化，且解析前需要遍历。<br>解决方式：Mybatis 自动将 SQL 执行结果映射成 Java 对象。</p>
+<p>问题四，数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。<br>解决方式：在 mybatis-config.xml 中，配置数据链接池，使用连接池管理数据库链接。<br>当然，即使不使用 MyBatis ，也可以使用数据库连接池。<br>另外，MyBatis 默认提供了数据库连接池的实现，只是说，因为其它开源的数据库连接池性能更好，所以一般很少使用 MyBatis 自带的连接池实现。</p>
+<h3 id="Mybatis-映射文件中，如果-A-标签通过-include-引用了B标签的内容，请问，B-标签能否定义在-A-标签的后面，还是说必须定义在A标签的前面？"><a href="#Mybatis-映射文件中，如果-A-标签通过-include-引用了B标签的内容，请问，B-标签能否定义在-A-标签的后面，还是说必须定义在A标签的前面？" class="headerlink" title="Mybatis 映射文件中，如果 A 标签通过 include 引用了B标签的内容，请问，B 标签能否定义在 A 标签的后面，还是说必须定义在A标签的前面？"></a>Mybatis 映射文件中，如果 A 标签通过 include 引用了B标签的内容，请问，B 标签能否定义在 A 标签的后面，还是说必须定义在A标签的前面？</h3><p>虽然 Mybatis 解析 XML 映射文件是按照顺序解析的。但是，被引用的 B 标签依然可以定义在任何地方，Mybatis 都可以正确识别。也就是说，无需按照顺序，进行定义。</p>
+<p>原理是，Mybatis 解析 A 标签，发现 A 标签引用了 B 标签，但是 B 标签尚未解析到，尚不存在，此时，Mybatis 会将 A 标签标记为<strong>未解析状态</strong>。然后，继续解析余下的标签，包含 B 标签，待所有标签解析完毕，Mybatis 会重新解析那些被标记为未解析的标签，此时再解析A标签时，B 标签已经存在，A 标签也就可以正常解析完成了</p>
+<h3 id="简述-Mybatis-的-XML-映射文件和-Mybatis-内部数据结构之间的映射关系？"><a href="#简述-Mybatis-的-XML-映射文件和-Mybatis-内部数据结构之间的映射关系？" class="headerlink" title="简述 Mybatis 的 XML 映射文件和 Mybatis 内部数据结构之间的映射关系？"></a>简述 Mybatis 的 XML 映射文件和 Mybatis 内部数据结构之间的映射关系？</h3><p>Mybatis 将所有 XML 配置信息都封装到 All-In-One 重量级对象Configuration内部。<br>在 XML Mapper 文件中：<br><code>&lt;parameterMap&gt; 标签，会被解析为 ParameterMap 对象，其每个子元素会被解析为 ParameterMapping 对象。</code><br><code>&lt;resultMap&gt; 标签，会被解析为 ResultMap 对象，其每个子元素会被解析为 ResultMapping 对象。</code><br><code>每一个 &lt;select&gt;、&lt;insert&gt;、&lt;update&gt;、&lt;delete&gt; 标签，均会被解析为一个 MappedStatement 对象，标签内的 SQL 会被解析为一个 BoundSql 对象。</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wexinpay.png" alt="Vincent 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Vincent 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MyBatis/" rel="tag"># MyBatis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/06/MyBatis-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="prev" title="MyBatis-源码分析-调试环境搭建">
+                MyBatis-源码分析-调试环境搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Vincent" />
+            
+              <p class="site-author-name" itemprop="name">Vincent</p>
+              <p class="site-description motion-element" itemprop="description">不积小流，无以成江海</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MyBatis-编程步骤"><span class="nav-number">1.</span> <span class="nav-text">MyBatis 编程步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和-的区别是什么？"><span class="nav-number">2.</span> <span class="nav-text">#{}和 ${} 的区别是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当实体类中的属性名和表中的字段名不一样-，怎么办？"><span class="nav-number">3.</span> <span class="nav-text">当实体类中的属性名和表中的字段名不一样 ，怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XML-映射文件中，除了常见的-select-insert-update-delete标-签之外，还有哪些标签？"><span class="nav-number">4.</span> <span class="nav-text">XML 映射文件中，除了常见的 select | insert | update | delete标 签之外，还有哪些标签？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis-动态-SQL-是做什么的？都有哪些动态-SQL-？能简述一下动态-SQL-的执行原理吗？"><span class="nav-number">5.</span> <span class="nav-text">Mybatis 动态 SQL 是做什么的？都有哪些动态 SQL ？能简述一下动态 SQL 的执行原理吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最佳实践中，通常一个-XML-映射文件，都会写一个-Mapper-接口与之对应。请问，这个-Mapper-接口的工作原理是什么？Mapper-接口里的方法，参数不同时，方法能重载吗？"><span class="nav-number">6.</span> <span class="nav-text">最佳实践中，通常一个 XML 映射文件，都会写一个 Mapper 接口与之对应。请问，这个 Mapper 接口的工作原理是什么？Mapper 接口里的方法，参数不同时，方法能重载吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mapper-接口绑定有几种实现方式，分别是怎么实现的"><span class="nav-number">7.</span> <span class="nav-text">Mapper 接口绑定有几种实现方式，分别是怎么实现的?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis-的-XML-Mapper文件中，不同的-XML-映射文件，id-是否可以重复？"><span class="nav-number">8.</span> <span class="nav-text">Mybatis 的 XML Mapper文件中，不同的 XML 映射文件，id 是否可以重复？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何获取自动生成的-主-键值"><span class="nav-number">9.</span> <span class="nav-text">如何获取自动生成的(主)键值?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis-执行批量插入，能返回数据库主键列表吗？"><span class="nav-number">10.</span> <span class="nav-text">Mybatis 执行批量插入，能返回数据库主键列表吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-Mapper-中如何传递多个参数"><span class="nav-number">11.</span> <span class="nav-text">在 Mapper 中如何传递多个参数?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis-是否可以映射-Enum-枚举类？"><span class="nav-number">12.</span> <span class="nav-text">Mybatis 是否可以映射 Enum 枚举类？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis-都有哪些-Executor-执行器？它们之间的区别是什么？"><span class="nav-number">13.</span> <span class="nav-text">Mybatis 都有哪些 Executor 执行器？它们之间的区别是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyBatis-如何执行批量插入"><span class="nav-number">14.</span> <span class="nav-text">MyBatis 如何执行批量插入?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍-MyBatis-的一级缓存和二级缓存的概念和实现原理？"><span class="nav-number">15.</span> <span class="nav-text">介绍 MyBatis 的一级缓存和二级缓存的概念和实现原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis-是否支持延迟加载？如果支持，它的实现原理是什么？"><span class="nav-number">16.</span> <span class="nav-text">Mybatis 是否支持延迟加载？如果支持，它的实现原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis-能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"><span class="nav-number">17.</span> <span class="nav-text">Mybatis 能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述-Mybatis-的插件运行原理？以及如何编写一个插件？"><span class="nav-number">18.</span> <span class="nav-text">简述 Mybatis 的插件运行原理？以及如何编写一个插件？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述-Mybatis-的插件运行原理？以及如何编写一个插件？-1"><span class="nav-number">19.</span> <span class="nav-text">简述 Mybatis 的插件运行原理？以及如何编写一个插件？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyBatis-与-Hibernate-有哪些不同？"><span class="nav-number">20.</span> <span class="nav-text">MyBatis 与 Hibernate 有哪些不同？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC-编程有哪些不足之处，MyBatis是如何解决这些问题的？"><span class="nav-number">21.</span> <span class="nav-text">JDBC 编程有哪些不足之处，MyBatis是如何解决这些问题的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis-映射文件中，如果-A-标签通过-include-引用了B标签的内容，请问，B-标签能否定义在-A-标签的后面，还是说必须定义在A标签的前面？"><span class="nav-number">22.</span> <span class="nav-text">Mybatis 映射文件中，如果 A 标签通过 include 引用了B标签的内容，请问，B 标签能否定义在 A 标签的后面，还是说必须定义在A标签的前面？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述-Mybatis-的-XML-映射文件和-Mybatis-内部数据结构之间的映射关系？"><span class="nav-number">23.</span> <span class="nav-text">简述 Mybatis 的 XML 映射文件和 Mybatis 内部数据结构之间的映射关系？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vincent</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
