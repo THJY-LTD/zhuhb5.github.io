@@ -90,17 +90,17 @@
 <meta property="og:url" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="邂逅文森特">
 <meta property="og:description" content="MyBatis 编程步骤 创建 SqlSessionFactory 对象 通过 SqlSessionFactory 获取 SqlSession 对象 通过 SqlSession 获得 Mapper 代理对象 执行成功，则使用 SqlSession 提交事务 执行失败，则使用 SqlSession 回滚事务 最终，关闭会话">
-<meta property="og:image" content="https://zhuhb5.github.io/.io//01.png">
-<meta property="og:image" content="https://zhuhb5.github.io/.io//02.png">
-<meta property="og:image" content="https://zhuhb5.github.io/.io//03.png">
-<meta property="og:image" content="https://zhuhb5.github.io/.io//04.png">
-<meta property="og:image" content="https://zhuhb5.github.io/.io//05.png">
+<meta property="og:image" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/01.png">
+<meta property="og:image" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/02.png">
+<meta property="og:image" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/03.png">
+<meta property="og:image" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/04.png">
+<meta property="og:image" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/05.png">
 <meta property="article:published_time" content="2020-06-05T07:50:37.000Z">
-<meta property="article:modified_time" content="2020-06-10T08:28:21.768Z">
+<meta property="article:modified_time" content="2020-06-11T02:33:46.839Z">
 <meta property="article:author" content="Vincent">
 <meta property="article:tag" content="MyBatis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhuhb5.github.io/.io//01.png">
+<meta name="twitter:image" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/01.png">
 
 
 
@@ -470,7 +470,7 @@
 <li>接口方法内的参数，就是传递给 SQL 的参数。<br>Mapper 接口是没有实现类的，当调用接口方法时，接口全限名 + 方法名拼接字符串作为 key 值，可唯一定位一个对应的 MappedStatement 。举例：com.mybatis3.mappers.StudentDao.findStudentById ，可以唯一找到 “namespace” 为 com.mybatis3.mappers.StudentDao 下面 “id” 为 findStudentById 的 MappedStatement 。</li>
 </ul>
 <p><code>总结来说，在 Mybatis 中，每一个 &lt;select /&gt;、&lt;insert /&gt;、&lt;update /&gt;、&lt;delete /&gt; 标签，都会被解析为一个 MappedStatement 对象。另外，Mapper 接口的实现类，通过 MyBatis 使用 JDK Proxy 自动生成其代理对象 Proxy ，而代理对象 Proxy 会拦截接口方法，从而“调用”对应的 MappedStatement 方法，最终执行 SQL ，返回执行结果。整体流程如下图：</code></p>
-<p><img src="/.io//01.png" alt="01"></p>
+<p><img src="/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/01.png" alt="01"></p>
 <ul>
 <li>其中，SqlSession 在调用 Executor 之前，会获得对应的 MappedStatement 方法。例如：DefaultSqlSession#select(String statement, Object parameter, RowBounds rowBounds, ResultHandler handler) 方法，代码如下：</li>
 </ul>
@@ -542,9 +542,9 @@
 <p>当然了，不光是 Mybatis，几乎所有的包括 Hibernate 在内，支持延迟加载的原理都是一样的。</p>
 <h3 id="Mybatis-能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"><a href="#Mybatis-能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。" class="headerlink" title="Mybatis 能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"></a>Mybatis 能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。</h3><p>能，Mybatis 不仅可以执行一对一、一对多的关联查询，还可以执行多对一，多对多的关联查询。</p>
 <ul>
-<li><p>一对多<br>用户级联文章在JavaBean中的编写方式,这就是一对多在JavaBean中的配置<br><img src="/.io//02.png" alt="02.png"><br>Mybatis的Mapper该如何编写一对多?很简单,就是在resultMap标签中配置<collection>标签,用来存储查询到的文章列表,注意posts代表的是用户实体的文章List集合<br><img src="/.io//03.png" alt="03.png"></collection></p>
+<li><p>一对多<br>用户级联文章在JavaBean中的编写方式,这就是一对多在JavaBean中的配置<br><img src="/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/02.png" alt="02.png"><br>Mybatis的Mapper该如何编写一对多?很简单,就是在resultMap标签中配置<collection>标签,用来存储查询到的文章列表,注意posts代表的是用户实体的文章List集合<br><img src="/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/03.png" alt="03.png"></collection></p>
 </li>
-<li><p>多对一<br>文章级联用户在JavaBean中的编写方式,这是多对一在JavaBean中的配置<br><img src="/.io//04.png" alt="04.png"><br>Mybatis的Mapper该如何编写多对一?很简单,就是在resultMap标签中配置<association></association>标签关联所属的用户实体<br><img src="/.io//05.png" alt="05.png"></p>
+<li><p>多对一<br>文章级联用户在JavaBean中的编写方式,这是多对一在JavaBean中的配置<br><img src="/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/04.png" alt="04.png"><br>Mybatis的Mapper该如何编写多对一?很简单,就是在resultMap标签中配置<association></association>标签关联所属的用户实体<br><img src="/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/05.png" alt="05.png"></p>
 </li>
 </ul>
 <h3 id="简述-Mybatis-的插件运行原理？以及如何编写一个插件？"><a href="#简述-Mybatis-的插件运行原理？以及如何编写一个插件？" class="headerlink" title="简述 Mybatis 的插件运行原理？以及如何编写一个插件？"></a>简述 Mybatis 的插件运行原理？以及如何编写一个插件？</h3><p>Mybatis 仅可以编写针对 ParameterHandler、ResultSetHandler、StatementHandler、Executor 这 4 种接口的插件。</p>
