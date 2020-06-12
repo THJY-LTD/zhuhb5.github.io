@@ -84,15 +84,15 @@
 
 
 
-<meta name="description" content="依赖工具MavenGitJDKIntelliJ IDEA">
+<meta name="description" content="概述本文主要是搭建 MyBatis 源码调试环境">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MyBatis-源码分析-调试环境搭建">
 <meta property="og:url" content="https://zhuhb5.github.io/2020/06/06/MyBatis-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="邂逅文森特">
-<meta property="og:description" content="依赖工具MavenGitJDKIntelliJ IDEA">
+<meta property="og:description" content="概述本文主要是搭建 MyBatis 源码调试环境">
 <meta property="og:image" content="https://zhuhb5.github.io/2020/06/06/MyBatis-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/01.jpg">
 <meta property="article:published_time" content="2020-06-06T02:49:55.000Z">
-<meta property="article:modified_time" content="2020-06-10T08:16:06.490Z">
+<meta property="article:modified_time" content="2020-06-12T07:58:50.854Z">
 <meta property="article:author" content="Vincent">
 <meta property="article:tag" content="MyBatis">
 <meta name="twitter:card" content="summary">
@@ -425,8 +425,11 @@
       
 
       
-        <h3 id="依赖工具"><a href="#依赖工具" class="headerlink" title="依赖工具"></a>依赖工具</h3><p>Maven<br>Git<br>JDK<br>IntelliJ IDEA  </p>
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>本文主要是搭建 MyBatis 源码调试环境</p>
 <a id="more"></a>
+
+<h3 id="依赖工具"><a href="#依赖工具" class="headerlink" title="依赖工具"></a>依赖工具</h3><p>Maven<br>Git<br>JDK<br>IntelliJ IDEA  </p>
+<!-- more -->
 <h3 id="源码拉取"><a href="#源码拉取" class="headerlink" title="源码拉取"></a>源码拉取</h3><p>从官方仓库 <a href="https://github.com/mybatis/mybatis-3" target="_blank" rel="noopener">https://github.com/mybatis/mybatis-3</a> Fork 出属于自己的仓库。为什么要 Fork ？既然开始阅读、调试源码，我们可能会写一些注释，有了自己的仓库，可以进行自由的提交。<br>使用 IntelliJ IDEA 从 Fork 出来的仓库拉取代码。<br>本文使用的 MyBatis 版本为 3.5.0-SNAPSHOT 。<br>因为 MyBatis 是有些年份的框架，所以克隆的过程可能比较慢，耐心等待。</p>
 <h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>MyBatis 想要调试，非常方便，只需要打开 org.apache.ibatis.autoconstructor.AutoConstructorTest 单元测试类，任意一个单元测试方法，右键，开始调试即可。<br>当然，考虑到让大家更好的理解 AutoConstructorTest 这个类，下面，我们还是详细解析下。AutoConstructorTest 所在在 autoconstructor 包下，整体结构如下：<br><img src="/2020/06/06/MyBatis-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/01.jpg" alt="01"></p>
 <h3 id="mybatis-config-xml"><a href="#mybatis-config-xml" class="headerlink" title="mybatis-config.xml"></a>mybatis-config.xml</h3><p>mybatis-config.xml ，MyBatis 配置文件。XML 如下：</p>
@@ -645,7 +648,7 @@ var jiathis_config={
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -656,7 +659,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -667,7 +670,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -710,7 +713,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖工具"><span class="nav-number">1.</span> <span class="nav-text">依赖工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码拉取"><span class="nav-number">2.</span> <span class="nav-text">源码拉取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试"><span class="nav-number">3.</span> <span class="nav-text">调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mybatis-config-xml"><span class="nav-number">4.</span> <span class="nav-text">mybatis-config.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AutoConstructorMapper-xml"><span class="nav-number">5.</span> <span class="nav-text">AutoConstructorMapper.xml</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AutoConstructorMapper"><span class="nav-number">5.1.</span> <span class="nav-text">AutoConstructorMapper</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CreateDB-sql"><span class="nav-number">6.</span> <span class="nav-text">CreateDB.sql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POJO"><span class="nav-number">7.</span> <span class="nav-text">POJO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AnnotatedSubject"><span class="nav-number">7.1.</span> <span class="nav-text">AnnotatedSubject</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PrimitiveSubject"><span class="nav-number">7.1.1.</span> <span class="nav-text">PrimitiveSubject</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BadSubject"><span class="nav-number">7.1.2.</span> <span class="nav-text">BadSubject</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ExtensiveSubject"><span class="nav-number">7.2.</span> <span class="nav-text">ExtensiveSubject</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AutoConstructorTest"><span class="nav-number">8.</span> <span class="nav-text">AutoConstructorTest</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#setUp"><span class="nav-number">8.1.</span> <span class="nav-text">setUp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试方法"><span class="nav-number">8.2.</span> <span class="nav-text">测试方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖工具"><span class="nav-number">2.</span> <span class="nav-text">依赖工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码拉取"><span class="nav-number">3.</span> <span class="nav-text">源码拉取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试"><span class="nav-number">4.</span> <span class="nav-text">调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mybatis-config-xml"><span class="nav-number">5.</span> <span class="nav-text">mybatis-config.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AutoConstructorMapper-xml"><span class="nav-number">6.</span> <span class="nav-text">AutoConstructorMapper.xml</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AutoConstructorMapper"><span class="nav-number">6.1.</span> <span class="nav-text">AutoConstructorMapper</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CreateDB-sql"><span class="nav-number">7.</span> <span class="nav-text">CreateDB.sql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POJO"><span class="nav-number">8.</span> <span class="nav-text">POJO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AnnotatedSubject"><span class="nav-number">8.1.</span> <span class="nav-text">AnnotatedSubject</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PrimitiveSubject"><span class="nav-number">8.1.1.</span> <span class="nav-text">PrimitiveSubject</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BadSubject"><span class="nav-number">8.1.2.</span> <span class="nav-text">BadSubject</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ExtensiveSubject"><span class="nav-number">8.2.</span> <span class="nav-text">ExtensiveSubject</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AutoConstructorTest"><span class="nav-number">9.</span> <span class="nav-text">AutoConstructorTest</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#setUp"><span class="nav-number">9.1.</span> <span class="nav-text">setUp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试方法"><span class="nav-number">9.2.</span> <span class="nav-text">测试方法</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -744,7 +747,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9k</span>
+    <span title="Site words total count">14.3k</span>
   
 </div>
 
