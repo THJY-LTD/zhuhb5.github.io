@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="小程序," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概述一位道友开了一个电脑维修店，他说想做一个小程序，希望用来引流。于是就接下了这个活，用了一周的时间才有了下文的内容。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序-如何快速搞定微信小程序开发">
+<meta property="og:url" content="https://zhuhb5.github.io/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%9E%E5%AE%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="邂逅文森特">
+<meta property="og:description" content="概述一位道友开了一个电脑维修店，他说想做一个小程序，希望用来引流。于是就接下了这个活，用了一周的时间才有了下文的内容。">
+<meta property="og:image" content="https://zhuhb5.github.io/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%9E%E5%AE%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/01.jpg">
+<meta property="og:image" content="https://zhuhb5.github.io/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%9E%E5%AE%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/02.jpg">
+<meta property="og:image" content="https://zhuhb5.github.io/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%9E%E5%AE%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/03.jpg">
+<meta property="og:image" content="https://zhuhb5.github.io/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%9E%E5%AE%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/04.jpg">
+<meta property="article:published_time" content="2020-06-18T06:52:27.000Z">
+<meta property="article:modified_time" content="2020-06-19T09:38:36.154Z">
+<meta property="article:author" content="Vincent">
+<meta property="article:tag" content="小程序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhuhb5.github.io/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%9E%E5%AE%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/01.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhuhb5.github.io/2020/06/18/微信小程序-如何快速搞定微信小程序开发/"/>
+
+
+
+
+
+  <title>微信小程序-如何快速搞定微信小程序开发 | 邂逅文森特</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="邂逅文森特" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">邂逅文森特</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">zhuhb5.github.io</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhuhb5.github.io/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%9E%E5%AE%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vincent">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邂逅文森特">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微信小程序-如何快速搞定微信小程序开发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-18T14:52:27+08:00">
+                2020-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" itemprop="url" rel="index">
+                    <span itemprop="name">小程序</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%9E%E5%AE%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" class="leancloud_visitors" data-flag-title="微信小程序-如何快速搞定微信小程序开发">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>一位道友开了一个电脑维修店，他说想做一个小程序，希望用来引流。于是就接下了这个活，用了一周的时间才有了下文的内容。</p>
+<a id="more"></a>
+
+<h3 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h3><h4 id="注册小程序"><a href="#注册小程序" class="headerlink" title="注册小程序"></a>注册小程序</h4><ul>
+<li>去<a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">微信公众平台</a>，选择小程序注册。注册小程序时，可以选择个人身份或者企业身份。如果您的小程序可能会需要微信支付的功能，那么请务必选择企业身份，因为个人微信小程序是无法接入微信支付功能的。</li>
+<li>小程序信息完善：注册完登录后去完善小程序基本信息。</li>
+<li>点击 设置 -&gt; 开发设置，在该页面可以看到AppID和AppSecret。查看后要记得把AppSecret在其他位置记录下来，因为AppSecret只能查看一次，后续无法再次查看了。小程序的AppID和AppSecret非常重要，开发阶段需要用到。</li>
+<li>小程序申请微信认证，个人类型帐号暂不支持微信认证。<br>认证入口：登录小程序—设置—基本设置—微信认证—详情。</li>
+</ul>
+<h4 id="注册微信支付"><a href="#注册微信支付" class="headerlink" title="注册微信支付"></a>注册微信支付</h4><p>已认证的小程序可申请微信支付。<br>会员下单需要支持微信支付，需要提供营业执照等信息注册，个人身份无法开通微信支付。去<a href="https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F" target="_blank" rel="noopener">微信支付</a>官方平台，接入微信支付，完成注册即可。</p>
+<h4 id="注册域名"><a href="#注册域名" class="headerlink" title="注册域名"></a>注册域名</h4><p>小程序访问后台只支持域名访问，小程序发布后需要提供域名。可以去阿里云注册一个<a href="https://wanwang.aliyun.com/?spm=5176.12825654.eofdhaal5.86.7ef42c4aJ7B8tC" target="_blank" rel="noopener">域名</a>，一般比较冷门的域名就几十￥。</p>
+<h3 id="开发阶段"><a href="#开发阶段" class="headerlink" title="开发阶段"></a>开发阶段</h3><h4 id="开发使用到的软件和工具"><a href="#开发使用到的软件和工具" class="headerlink" title="开发使用到的软件和工具"></a>开发使用到的软件和工具</h4><p>微信开发者工具  IDEA  JDK1.8  Maven3.3  Tomcat8 MySQL5.7  Redis4.0.1  Git Xshell</p>
+<h4 id="二次开发"><a href="#二次开发" class="headerlink" title="二次开发"></a>二次开发</h4><h5 id="前台"><a href="#前台" class="headerlink" title="前台"></a>前台</h5><p>前台页面用的Vue + iView开发，根据要求改造好页面即可。<br><a href="https://developers.weixin.qq.com/miniprogram/dev/api/" target="_blank" rel="noopener">微信官方文档API</a><br><a href="https://cn.vuejs.org/v2/api/" target="_blank" rel="noopener">Vue官方API</a><br><a href="https://www.iviewui.com/docs/guide/install" target="_blank" rel="noopener">iView官方API</a></p>
+<h5 id="后台"><a href="#后台" class="headerlink" title="后台"></a>后台</h5><p>由于后台功能模块太多了，不一一详细描述。只贴几个关键的功能点。</p>
+<h5 id="功能权限设计"><a href="#功能权限设计" class="headerlink" title="功能权限设计"></a>功能权限设计</h5><p>sys_user[用户]表，保存用户相关数据，通过sys_user_role[用户与角色关联]表，与 sys_role[角色]表关联；sys_menu[菜单]表通过 sys_role_menu[菜单与角色关联]表，与 sys_role[角色]表关联<br>sys_menu 表，保存菜单相关数据，并在 perms 字段里，保存了 shiro 的权限标识，也就是说拥有此菜单，就拥有 perms字段里的所有权限，比如，某用户拥有的菜单权限标识 sys:menu:list，就可以访问下面的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 所有菜单列表</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/list"</span>)</span><br><span class="line"><span class="meta">@RequiresPermissions</span>(<span class="string">"sys:menu:list"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">(@RequestParam Map&lt;String, Object&gt; params)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//查询列表数据</span></span><br><span class="line">    Query query = <span class="keyword">new</span> Query(params);</span><br><span class="line">    List&lt;SysMenuEntity&gt; menuList = sysMenuService.queryList(query);</span><br><span class="line">    <span class="keyword">int</span> total = sysMenuService.queryTotal(query);</span><br><span class="line"></span><br><span class="line">    PageUtils pageUtil = <span class="keyword">new</span> PageUtils(menuList, total, query.getLimit(), query.getPage());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> R.ok().put(<span class="string">"page"</span>, pageUtil);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="日志拦截器"><a href="#日志拦截器" class="headerlink" title="日志拦截器"></a>日志拦截器</h5><p>为了方便开发调试需要日志拦截器。（登录拦截和权限拦截已在 shiro 实现，日志拦截器只做控制台输出日志，不做任何拦截处理。）输出打印除/statics/<em>*、</em>.html、*.js 以外的所有请求。 </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 为了加载拦截器 需要 日志拦截器 （登录拦截和权限拦截已在shiro实现，看实现 情况处理） --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--&lt;bean class="com.platform.interceptor.LogInterceptor"/&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">"/**"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:exclude-mapping</span> <span class="attr">path</span>=<span class="string">"/statics/**"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:exclude-mapping</span> <span class="attr">path</span>=<span class="string">"/**/**.html"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:exclude-mapping</span> <span class="attr">path</span>=<span class="string">"/**/**.js"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.platform.interceptor.LogInterceptor"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>实现类<br>在preHandle 记录本次请求的时间，在afterCompletion 中取出，然后对比当前时间，即可计算出本次请求的耗时。<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">public</span> <span class="keyword">class</span> LogInterceptor extends HandlerInterceptorAdapter &#123;</span><br><span class="line"></span><br><span class="line">    private static final <span class="keyword">Log</span> <span class="keyword">log</span> = LogFactory.getLog(LogInterceptor.<span class="keyword">class</span>);</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    <span class="built_in">public</span> <span class="type">boolean</span> preHandle(HttpServletRequest request, HttpServletResponse response, <span class="keyword">Object</span> <span class="keyword">handler</span>) throws <span class="keyword">Exception</span> &#123;</span><br><span class="line">        request.setAttribute("REQUEST_START_TIME", <span class="built_in">new</span> <span class="type">Date</span>());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    <span class="built_in">public</span> <span class="type">void</span> postHandle(HttpServletRequest request, HttpServletResponse response, <span class="keyword">Object</span> <span class="keyword">handler</span>,</span><br><span class="line">                           ModelAndView modelAndView) throws <span class="keyword">Exception</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    <span class="built_in">public</span> <span class="type">void</span> afterCompletion(HttpServletRequest request,</span><br><span class="line">                                HttpServletResponse response, <span class="keyword">Object</span> <span class="keyword">handler</span>,</span><br><span class="line">                                <span class="keyword">Exception</span> ex)</span><br><span class="line">            throws <span class="keyword">Exception</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">Date</span> start = (<span class="type">Date</span>) request.getAttribute("REQUEST_START_TIME");</span><br><span class="line">        <span class="type">Date</span> end = <span class="built_in">new</span> <span class="type">Date</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">log</span>.<span class="keyword">info</span>("本次请求耗时：" + (<span class="keyword">end</span>.getTime() - <span class="keyword">start</span>.getTime()) + "毫秒；" + getRequestInfo(request).toString());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    <span class="built_in">public</span> <span class="type">void</span> afterConcurrentHandlingStarted(HttpServletRequest request,</span><br><span class="line">                                               HttpServletResponse response,</span><br><span class="line">                                               <span class="keyword">Object</span> <span class="keyword">handler</span>)</span><br><span class="line">            throws <span class="keyword">Exception</span> &#123;</span><br><span class="line">        super.afterConcurrentHandlingStarted(request, response, <span class="keyword">handler</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 主要功能:获取请求详细信息</span></span><br><span class="line"><span class="comment">     * 注意事项:无</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param request 请求</span></span><br><span class="line"><span class="comment">     * @return 请求信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    private StringBuilder getRequestInfo(HttpServletRequest request) &#123;</span><br><span class="line">        StringBuilder reqInfo = <span class="built_in">new</span> StringBuilder();</span><br><span class="line">        UrlPathHelper urlPathHelper = <span class="built_in">new</span> UrlPathHelper();</span><br><span class="line">        String urlPath = urlPathHelper.getLookupPathForRequest(request);</span><br><span class="line">        reqInfo.append(" 请求路径=" + urlPath);</span><br><span class="line">        reqInfo.append(" 来源IP=" + RequestUtil.getIpAddrByRequest(request));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        String userName = "";</span><br><span class="line">        try &#123;</span><br><span class="line">            SysUserEntity sysUser = (SysUserEntity) SecurityUtils.getSubject().getSession().getAttribute(<span class="keyword">Constant</span>.<span class="built_in">CURRENT_USER</span>);</span><br><span class="line">            <span class="keyword">if</span> (sysUser != <span class="keyword">null</span>) &#123;</span><br><span class="line">                userName = (sysUser.getUsername());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (<span class="keyword">Exception</span> e) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        reqInfo.append(" 操作人=" + (userName));</span><br><span class="line">        reqInfo.append(" 请求参数=" + RequestUtil.getParameters(request).toString());</span><br><span class="line">        <span class="keyword">return</span> reqInfo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="系统日志"><a href="#系统日志" class="headerlink" title="系统日志"></a>系统日志</h5><p>系统日志是通过 Spring AOP 实现的，我们自定义了注解@SysLog，此注解只能用于方法上。 </p>
+<ul>
+<li><p>定义注解 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SysLog &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> "操作日志"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>具体实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SysLogAspect</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SysLogService sysLogService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 切点</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Pointcut</span>(<span class="string">"@annotation(com.platform.annotation.SysLog)"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logPointCut</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 前置通知</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> joinPoint 连接点</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Before</span>(<span class="string">"logPointCut()"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveSysLog</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">        MethodSignature signature = (MethodSignature) joinPoint.getSignature();</span><br><span class="line">        Method method = signature.getMethod();</span><br><span class="line"></span><br><span class="line">        SysLogEntity sysLog = <span class="keyword">new</span> SysLogEntity();</span><br><span class="line">        SysLog syslog = method.getAnnotation(SysLog<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="keyword">if</span> (syslog != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//注解上的描述</span></span><br><span class="line">            sysLog.setOperation(syslog.value());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//请求的方法名</span></span><br><span class="line">        String className = joinPoint.getTarget().getClass().getName();</span><br><span class="line">        String methodName = signature.getName();</span><br><span class="line">        sysLog.setMethod(className + <span class="string">"."</span> + methodName + <span class="string">"()"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//请求的参数</span></span><br><span class="line">        Object[] args = joinPoint.getArgs();</span><br><span class="line">        String params = JSON.toJSONString(args[<span class="number">0</span>]);</span><br><span class="line">        sysLog.setParams(params);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取request</span></span><br><span class="line">        HttpServletRequest request = HttpContextUtils.getHttpServletRequest();</span><br><span class="line">        <span class="comment">//设置IP地址</span></span><br><span class="line">        sysLog.setIp(IPUtils.getIpAddr(request));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//用户名</span></span><br><span class="line">        SysUserEntity sysUserEntity = ShiroUtils.getUserEntity();</span><br><span class="line">        String username = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"login"</span>.equals(methodName)) &#123;</span><br><span class="line">            username = params;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != sysUserEntity) &#123;</span><br><span class="line">            username = ShiroUtils.getUserEntity().getUsername();</span><br><span class="line">        &#125;</span><br><span class="line">        sysLog.setUsername(username);</span><br><span class="line"></span><br><span class="line">        sysLog.setCreateDate(<span class="keyword">new</span> Date());</span><br><span class="line">        <span class="comment">//保存系统日志</span></span><br><span class="line">        sysLogService.save(sysLog);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 保存</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="meta">@SysLog</span>(<span class="string">"保存菜单"</span>)</span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/save"</span>)</span><br><span class="line"><span class="meta">@RequiresPermissions</span>(<span class="string">"sys:menu:save"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">save</span><span class="params">(@RequestBody SysMenuEntity menu)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//数据校验</span></span><br><span class="line">    verifyForm(menu);</span><br><span class="line"></span><br><span class="line">    sysMenuService.save(menu);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="统一异常处理"><a href="#统一异常处理" class="headerlink" title="统一异常处理"></a>统一异常处理</h5></li>
+<li><p>后台异常处理<br>本项目通过 RRException 异常类，抛出自定义异常，RRException 继承 RuntimeException，不能继承 Exception，如果继承 Exception，则 Spring 事务不会回滚。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RRException</span> <span class="keyword">extends</span> <span class="title">RuntimeException</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String msg;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> code = <span class="number">500</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RRException</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(msg);</span><br><span class="line">        <span class="keyword">this</span>.msg = msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RRException</span><span class="params">(String msg, Throwable e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(msg, e);</span><br><span class="line">        <span class="keyword">this</span>.msg = msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RRException</span><span class="params">(String msg, <span class="keyword">int</span> code)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(msg);</span><br><span class="line">        <span class="keyword">this</span>.msg = msg;</span><br><span class="line">        <span class="keyword">this</span>.code = code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RRException</span><span class="params">(String msg, <span class="keyword">int</span> code, Throwable e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(msg, e);</span><br><span class="line">        <span class="keyword">this</span>.msg = msg;</span><br><span class="line">        <span class="keyword">this</span>.code = code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMsg</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMsg</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.msg = msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCode</span><span class="params">(<span class="keyword">int</span> code)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.code = code;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们定义了 RRExceptionHandler 类，并加上注解@RestControllerAdvice，就可以处理所有抛出的异常，并返回 JSON 数据。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestControllerAdvice</span>(value = &#123;<span class="string">"com.platform"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RRExceptionHandler</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(getClass());</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 自定义异常</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(RRException<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">R</span> <span class="title">handleRRException</span>(<span class="title">RRException</span> <span class="title">e</span>) </span>&#123;</span><br><span class="line">        R r = <span class="keyword">new</span> R();</span><br><span class="line">        r.put(<span class="string">"code"</span>, e.getCode());</span><br><span class="line">        r.put(<span class="string">"msg"</span>, e.getMessage());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(DuplicateKeyException<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">R</span> <span class="title">handleDuplicateKeyException</span>(<span class="title">DuplicateKeyException</span> <span class="title">e</span>) </span>&#123;</span><br><span class="line">        logger.error(e.getMessage(), e);</span><br><span class="line">        <span class="keyword">return</span> R.error(<span class="string">"数据库中已存在该记录"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(AuthorizationException<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">R</span> <span class="title">handleAuthorizationException</span>(<span class="title">AuthorizationException</span> <span class="title">e</span>) </span>&#123;</span><br><span class="line">        logger.error(e.getMessage(), e);</span><br><span class="line">        <span class="keyword">return</span> R.error(<span class="string">"没有权限，请联系管理员授权"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(Exception<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">R</span> <span class="title">handleException</span>(<span class="title">Exception</span> <span class="title">e</span>) </span>&#123;</span><br><span class="line">        logger.error(e.getMessage(), e);</span><br><span class="line">        <span class="keyword">return</span> R.error();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(ApiRRException<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">Object</span> <span class="title">handleApiRRException</span>(<span class="title">ApiRRException</span> <span class="title">e</span>) </span>&#123;</span><br><span class="line">        HashMap result = <span class="keyword">new</span> HashMap();</span><br><span class="line">        result.put(<span class="string">"errno"</span>, e.getErrno());</span><br><span class="line">        result.put(<span class="string">"errmsg"</span>, e.getErrmsg());</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>前端统一异常处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> Ajax.request(&#123;</span></span><br><span class="line"><span class="comment">        url: '', //访问路径</span></span><br><span class="line"><span class="comment">        dataType: 'json', //访问类型 'json','html'等</span></span><br><span class="line"><span class="comment">        params: getJson(form),</span></span><br><span class="line"><span class="comment">        resultMsg: true, false, //是否需要提示信息</span></span><br><span class="line"><span class="comment">        type: 'GET',//,'get','post'</span></span><br><span class="line"><span class="comment">        beforeSubmit: function (data) &#123;&#125;,//提交前处理</span></span><br><span class="line"><span class="comment">        successCallback: function (data) &#123;&#125; //提交后处理</span></span><br><span class="line"><span class="comment">    &#125;);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Ajax = function () &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//var opt = &#123; type:'GET',dataType:'json',resultMsg:true &#125;;</span></span><br><span class="line">    <span class="function">function <span class="title">request</span><span class="params">(opt)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//添加遮罩层</span></span><br><span class="line">        dialogLoading(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (typeof opt.cache == <span class="string">'undefined'</span>) &#123;</span><br><span class="line">            opt.cache = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (typeof opt == <span class="string">'undefined'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//opt = $.extend(opt, p);</span></span><br><span class="line">        <span class="keyword">if</span> (typeof(opt.type) == <span class="string">'undefined'</span>) &#123;</span><br><span class="line">            opt.type = <span class="string">'GET'</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (typeof(opt.async) == <span class="string">'undefined'</span>) &#123;</span><br><span class="line">            opt.async = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (typeof(opt.dataType) == <span class="string">'undefined'</span>) &#123;</span><br><span class="line">            opt.dataType = <span class="string">'json'</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (typeof(opt.contentType) == <span class="string">'undefined'</span>) &#123;</span><br><span class="line">            opt.contentType = <span class="string">'application/x-www-form-urlencoded;chartset=UTF-8'</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (typeof(opt.params) == <span class="string">'undefined'</span> || opt.params == <span class="keyword">null</span>) &#123;</span><br><span class="line">            opt.params = &#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        opt.params.date = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="keyword">if</span> (typeof(opt.beforeSubmit) != <span class="string">'undefined'</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> flag = opt.beforeSubmit(opt);</span><br><span class="line">            <span class="keyword">if</span> (!flag) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (typeof(opt.resultMsg) == <span class="string">'undefined'</span>) &#123;</span><br><span class="line">            opt.resultMsg = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            async: opt.async,</span><br><span class="line">            url: opt.url,</span><br><span class="line">            dataType: opt.dataType,</span><br><span class="line">            contentType: opt.contentType,</span><br><span class="line">            data: opt.params,</span><br><span class="line">            crossDomain: opt.crossDomain || <span class="keyword">false</span>,</span><br><span class="line">            type: opt.type,</span><br><span class="line">            cache: opt.cache,</span><br><span class="line">            success: function (data) &#123;</span><br><span class="line">                <span class="comment">//关闭遮罩</span></span><br><span class="line">                dialogLoading(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (typeof data == <span class="string">'string'</span> &amp;&amp; data.indexOf(<span class="string">"exception"</span>) &gt; <span class="number">0</span> || typeof data.code != <span class="string">'undefined'</span> &amp;&amp; data.code != <span class="string">'0'</span>) &#123;</span><br><span class="line">                    <span class="keyword">var</span> result = &#123;code: <span class="keyword">null</span>&#125;;</span><br><span class="line">                    <span class="keyword">if</span> (typeof data == <span class="string">'string'</span>) &#123;</span><br><span class="line">                        result = eval(<span class="string">'('</span> + data + <span class="string">')'</span>)</span><br><span class="line">                    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (typeof data == <span class="string">'object'</span>) &#123;</span><br><span class="line">                        result = data;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (opt.resultMsg &amp;&amp; result.msg) &#123;</span><br><span class="line">                        layer.alert(result.msg, &#123;icon: <span class="number">5</span>&#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (opt.resultMsg &amp;&amp; data.msg) &#123;</span><br><span class="line">                    layer.alert(data.msg, &#123;icon: <span class="number">6</span>&#125;, function () &#123;</span><br><span class="line">                        <span class="keyword">if</span> (typeof(opt.successCallback) != <span class="string">'undefined'</span>) &#123;</span><br><span class="line">                            opt.successCallback(data);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (typeof(opt.successCallback) != <span class="string">'undefined'</span>) &#123;</span><br><span class="line">                    opt.successCallback(data);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            error: function () &#123;</span><br><span class="line">                <span class="comment">//关闭遮罩</span></span><br><span class="line">                dialogLoading(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">                layer.alert(<span class="string">"此页面发生未知异常,请联系管理员"</span>, &#123;icon: <span class="number">5</span>&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Ajax调用request</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        request: request</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+<p>后台抛出未知异常，进入 error，提示此页面发生未知异常，请联系管理员。当后台抛出自定义异常，由 RRExceptionHandler类捕获，返回异常信息 Json 数据。 </p>
+</li>
+</ul>
+<h5 id="云存储模块"><a href="#云存储模块" class="headerlink" title="云存储模块"></a>云存储模块</h5><p>图片、文件上传，使用的是七牛、阿里云、腾讯云的存储服务，不能上传到本地服务器。上传到本地服务器，不利于维护，访问速度慢、占用服务器带宽等缺点，所以推荐使用云存储服务。<br>由于没有购买云存储服务器，所以我采用本地服务器。用nginx做代理。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">  <span class="attribute">server_name</span>  <span class="number">47</span>.<span class="number">113</span>.<span class="number">108</span>.xxx;</span><br><span class="line"></span><br><span class="line">  <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">  <span class="attribute">location</span> / &#123;</span><br><span class="line">      <span class="attribute">alias</span>  /data/images/;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="发布阶段"><a href="#发布阶段" class="headerlink" title="发布阶段"></a>发布阶段</h3><h4 id="代码审核与发布"><a href="#代码审核与发布" class="headerlink" title="代码审核与发布"></a>代码审核与发布</h4><p>微信开发工具上传<br><img src="/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%9E%E5%AE%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/01.jpg" alt="01"></p>
+<h4 id="提交审核"><a href="#提交审核" class="headerlink" title="提交审核"></a>提交审核</h4><p><img src="/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%9E%E5%AE%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/02.jpg" alt="02"></p>
+<h4 id="代码发布"><a href="#代码发布" class="headerlink" title="代码发布"></a>代码发布</h4><p>代码审核通过，需要开发者手动点击发布，小程序才会发布到线上提供服务。<br><img src="/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%9E%E5%AE%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/03.jpg" alt="03"></p>
+<h3 id="配置文件修改"><a href="#配置文件修改" class="headerlink" title="配置文件修改"></a>配置文件修改</h3><p>部署前需要根据实际参数修改配置文件</p>
+<ul>
+<li><p>prod/platform.properties<br>#小程序ID<br>wx.appId=<br>#小程序密钥<br>wx.secret=<br>#商户号<br>wx.mchId=<br>#支付签名<br>wx.paySignKey=</p>
+</li>
+<li><p>j2cache.properties<br>redis.hosts=<br>redis.password=</p>
+</li>
+</ul>
+<h3 id="生产环境部署"><a href="#生产环境部署" class="headerlink" title="生产环境部署"></a>生产环境部署</h3><ul>
+<li><p>maven 打包</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn <span class="keyword">package</span> <span class="title">-P prod</span></span><br></pre></td></tr></table></figure></li>
+<li><p>拷贝 platform-framework.war 到云服务器 Tomcat 的 webapps 目录下。 </p>
+</li>
+<li><p>启动 Tomcat</p>
+</li>
+</ul>
+<h3 id="服务器环境搭建"><a href="#服务器环境搭建" class="headerlink" title="服务器环境搭建"></a>服务器环境搭建</h3><ul>
+<li><a href="https://blog.csdn.net/u010590120/article/details/94736800" target="_blank" rel="noopener">Centos7-JDK安装</a></li>
+<li><a href="http://localhost:4000/2020/06/16/Centos7-Redis%E5%AE%89%E8%A3%85/" target="_blank" rel="noopener">Centos7-Redis安装</a></li>
+<li><a href="http://localhost:4000/2020/06/18/Centos7-Nginx%E5%AE%89%E8%A3%85/" target="_blank" rel="noopener">Centos7-Nginx安装</a></li>
+<li><a href="http://localhost:4000/2020/06/16/Centos7-Mysql%E5%AE%89%E8%A3%85/" target="_blank" rel="noopener">Centos7-MySql安装</a></li>
+</ul>
+<p>服务器配置：1核心2G 40G<br><img src="/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%9E%E5%AE%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/04.jpg" alt="04"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wexinpay.png" alt="Vincent 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Vincent 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"># 小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/18/Centos7-Nginx%E5%AE%89%E8%A3%85/" rel="next" title="Centos7-Nginx安装">
+                <i class="fa fa-chevron-left"></i> Centos7-Nginx安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Vincent" />
+            
+              <p class="site-author-name" itemprop="name">Vincent</p>
+              <p class="site-description motion-element" itemprop="description">不积小流，无以成江海</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备阶段"><span class="nav-number">2.</span> <span class="nav-text">准备阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注册小程序"><span class="nav-number">2.1.</span> <span class="nav-text">注册小程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册微信支付"><span class="nav-number">2.2.</span> <span class="nav-text">注册微信支付</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册域名"><span class="nav-number">2.3.</span> <span class="nav-text">注册域名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发阶段"><span class="nav-number">3.</span> <span class="nav-text">开发阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#开发使用到的软件和工具"><span class="nav-number">3.1.</span> <span class="nav-text">开发使用到的软件和工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二次开发"><span class="nav-number">3.2.</span> <span class="nav-text">二次开发</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前台"><span class="nav-number">3.2.1.</span> <span class="nav-text">前台</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#后台"><span class="nav-number">3.2.2.</span> <span class="nav-text">后台</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#功能权限设计"><span class="nav-number">3.2.3.</span> <span class="nav-text">功能权限设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#日志拦截器"><span class="nav-number">3.2.4.</span> <span class="nav-text">日志拦截器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#系统日志"><span class="nav-number">3.2.5.</span> <span class="nav-text">系统日志</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#统一异常处理"><span class="nav-number">3.2.6.</span> <span class="nav-text">统一异常处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#云存储模块"><span class="nav-number">3.2.7.</span> <span class="nav-text">云存储模块</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布阶段"><span class="nav-number">4.</span> <span class="nav-text">发布阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码审核与发布"><span class="nav-number">4.1.</span> <span class="nav-text">代码审核与发布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交审核"><span class="nav-number">4.2.</span> <span class="nav-text">提交审核</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码发布"><span class="nav-number">4.3.</span> <span class="nav-text">代码发布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件修改"><span class="nav-number">5.</span> <span class="nav-text">配置文件修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生产环境部署"><span class="nav-number">6.</span> <span class="nav-text">生产环境部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器环境搭建"><span class="nav-number">7.</span> <span class="nav-text">服务器环境搭建</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vincent</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">20.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+

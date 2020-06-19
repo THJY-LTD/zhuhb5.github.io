@@ -73,7 +73,7 @@
 
 
 
-  <meta name="keywords" content="MyBatis," />
+  <meta name="keywords" content="Linux," />
 
 
 
@@ -84,19 +84,17 @@
 
 
 
-<meta name="description" content="概述本文，我们来分享 MyBatis 的反射模块">
+<meta name="description" content="概述本文要主描述了Centos7-Redis安装">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis-源码分析-反射模块">
-<meta property="og:url" content="https://zhuhb5.github.io/2020/06/10/MyBatis-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%8F%8D%E5%B0%84%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:title" content="Centos7-Redis安装">
+<meta property="og:url" content="https://zhuhb5.github.io/2020/06/16/Centos7-Redis%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="邂逅文森特">
-<meta property="og:description" content="概述本文，我们来分享 MyBatis 的反射模块">
-<meta property="og:image" content="https://zhuhb5.github.io/2020/06/10/MyBatis-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%8F%8D%E5%B0%84%E6%A8%A1%E5%9D%97/01.jpg">
-<meta property="article:published_time" content="2020-06-10T09:16:49.000Z">
-<meta property="article:modified_time" content="2020-06-12T08:00:58.666Z">
+<meta property="og:description" content="概述本文要主描述了Centos7-Redis安装">
+<meta property="article:published_time" content="2020-06-16T08:46:47.000Z">
+<meta property="article:modified_time" content="2020-06-19T09:37:56.625Z">
 <meta property="article:author" content="Vincent">
-<meta property="article:tag" content="MyBatis">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhuhb5.github.io/2020/06/10/MyBatis-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%8F%8D%E5%B0%84%E6%A8%A1%E5%9D%97/01.jpg">
 
 
 
@@ -126,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://zhuhb5.github.io/2020/06/10/MyBatis-源码分析-反射模块/"/>
+  <link rel="canonical" href="https://zhuhb5.github.io/2020/06/16/Centos7-Redis安装/"/>
 
 
 
 
 
-  <title>MyBatis-源码分析-反射模块 | 邂逅文森特</title>
+  <title>Centos7-Redis安装 | 邂逅文森特</title>
   
 
 
@@ -294,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhuhb5.github.io/2020/06/10/MyBatis-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%8F%8D%E5%B0%84%E6%A8%A1%E5%9D%97/">
+    <link itemprop="mainEntityOfPage" href="https://zhuhb5.github.io/2020/06/16/Centos7-Redis%E5%AE%89%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Vincent">
@@ -311,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MyBatis-源码分析-反射模块</h1>
+          <h1 class="post-title" itemprop="name headline">Centos7-Redis安装</h1>
         
 
         <div class="post-meta">
@@ -323,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-10T17:16:49+08:00">
-                2020-06-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-16T16:46:47+08:00">
+                2020-06-16
               </time>
             
 
@@ -346,8 +344,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MyBatis/" itemprop="url" rel="index">
-                    <span itemprop="name">MyBatis</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -363,7 +361,7 @@
 
           
           
-             <span id="/2020/06/10/MyBatis-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%8F%8D%E5%B0%84%E6%A8%A1%E5%9D%97/" class="leancloud_visitors" data-flag-title="MyBatis-源码分析-反射模块">
+             <span id="/2020/06/16/Centos7-Redis%E5%AE%89%E8%A3%85/" class="leancloud_visitors" data-flag-title="Centos7-Redis安装">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -388,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.5k 字
+                  446 字
                 </span>
               
 
@@ -404,7 +402,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -425,32 +423,25 @@
       
 
       
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>本文，我们来分享 MyBatis 的反射模块</p>
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>本文要主描述了Centos7-Redis安装</p>
 <a id="more"></a>
-<p>MyBatis 反射模块对应 reflection 包。如下图所示：<br><img src="/2020/06/10/MyBatis-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%8F%8D%E5%B0%84%E6%A8%A1%E5%9D%97/01.jpg" alt="01"><br><code>Java 中的反射虽然功能强大，但对大多数开发人员来说，写出高质量的反射代码还是 有一定难度的。MyBatis 中专门提供了反射模块，该模块对 Java 原生的反射进行了良好的封装，提了更加简洁易用的 API，方便上层使调用，并且对反射操作进行了一系列优化，例如缓存了类的元数据，提高了反射操作的性能。</code></p>
-<h3 id="Reflector"><a href="#Reflector" class="headerlink" title="Reflector"></a>Reflector</h3><p>org.apache.ibatis.reflection.Reflector ，反射器，每个 Reflector 对应一个类。Reflector 会缓存反射操作需要的类的信息，例如：构造方法、属性名、setting / getting 方法等等。代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Reflector</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 对应的类</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Class&lt;?&gt; type;</span><br><span class="line">  <span class="comment">// 可读属性数组</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String[] readablePropertyNames;</span><br><span class="line">  <span class="comment">// 可写属性数组</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String[] writeablePropertyNames;</span><br><span class="line">  <span class="comment">// 属性对应的 setting 方法的映射 key: 属性名称  value: Invoke对象</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Invoker&gt; setMethods = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">  <span class="comment">// 属性对应的 getting 方法的映射 key: 属性名称  value: Invoke对象</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Invoker&gt; getMethods = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">  <span class="comment">// 属性对应的 setting 方法的方法参数类型的映射 key 为属性名称  value 为方法参数类型</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Class&lt;?&gt;&gt; setTypes = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">  <span class="comment">// 属性对应的 getting 方法的返回值类型的映射 key 为属性名称  value 为返回值的类型</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Class&lt;?&gt;&gt; getTypes = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">  <span class="comment">// 默认构造方法</span></span><br><span class="line">  <span class="keyword">private</span> Constructor&lt;?&gt; defaultConstructor;</span><br><span class="line">  <span class="comment">// 不区分大小写的属性集合</span></span><br><span class="line">  <span class="keyword">private</span> Map&lt;String, String&gt; caseInsensitivePropertyMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Reflector</span><span class="params">(Class&lt;?&gt; clazz)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 设置对应的类</span></span><br><span class="line">    type = clazz;</span><br><span class="line">    <span class="comment">// &lt;1&gt; 初始化 defaultConstructor</span></span><br><span class="line">    addDefaultConstructor(clazz);</span><br><span class="line">    <span class="comment">// &lt;2&gt; // 初始化 getMethods 和 getTypes ，通过遍历 getting 方法</span></span><br><span class="line">    addGetMethods(clazz);</span><br><span class="line">    <span class="comment">// &lt;3&gt; // 初始化 setMethods 和 setTypes ，通过遍历 setting 方法。</span></span><br><span class="line">    addSetMethods(clazz);</span><br><span class="line">    <span class="comment">// &lt;4&gt; // 初始化 getMethods + getTypes 和 setMethods + setTypes ，通过遍历 fields 属性。</span></span><br><span class="line">    addFields(clazz);</span><br><span class="line">    <span class="comment">// &lt;5&gt; 初始化 readablePropertyNames、writeablePropertyNames、caseInsensitivePropertyMap 属性</span></span><br><span class="line">    readablePropertyNames = getMethods.keySet().toArray(<span class="keyword">new</span> String[getMethods.keySet().size()]);</span><br><span class="line">    writeablePropertyNames = setMethods.keySet().toArray(<span class="keyword">new</span> String[setMethods.keySet().size()]);</span><br><span class="line">    <span class="keyword">for</span> (String propName : readablePropertyNames) &#123;</span><br><span class="line">      caseInsensitivePropertyMap.put(propName.toUpperCase(Locale.ENGLISH), propName);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (String propName : writeablePropertyNames) &#123;</span><br><span class="line">      caseInsensitivePropertyMap.put(propName.toUpperCase(Locale.ENGLISH), propName);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 省略一些方法。。。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="addDefaultConstructor"><a href="#addDefaultConstructor" class="headerlink" title="addDefaultConstructor"></a>addDefaultConstructor</h4><p>addDefaultConstructor(Class&lt;?&gt; clazz) 方法，查找默认无参构造方法。代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addDefaultConstructor</span><span class="params">(Class&lt;?&gt; clazz)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 获得所有构造方法</span></span><br><span class="line">  Constructor&lt;?&gt;[] consts = clazz.getDeclaredConstructors();</span><br><span class="line">  <span class="keyword">for</span> (Constructor&lt;?&gt; constructor : consts) &#123;</span><br><span class="line">    <span class="comment">// 判断无参的构造方法</span></span><br><span class="line">    <span class="keyword">if</span> (constructor.getParameterTypes().length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.defaultConstructor = constructor;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="centos7-安装redis"><a href="#centos7-安装redis" class="headerlink" title="centos7 安装redis"></a>centos7 安装redis</h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># wget http://download.redis.io/releases/redis-5.0.7.tar.gz</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># tar -zxvf redis-5.0.7.tar.gz</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># cd redis-5.0.7</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># yum -y install gcc-c++</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># make</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># make install</span></span><br></pre></td></tr></table></figure>
+<p>如果make失败需要执行make distclean<br>make install</p>
+<h3 id="redis设置外网访问"><a href="#redis设置外网访问" class="headerlink" title="redis设置外网访问"></a>redis设置外网访问</h3><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="symbol">root@</span>qyjy ~]# vim redis<span class="number">-5.0</span><span class="number">.7</span>/redis.conf</span><br></pre></td></tr></table></figure>
+<p>bind:0.0.0.0 设置所有ip都能访问，127.0.0.1 是只绑定本地<br>daemonize yes 设置后台启动<br>protected no<br>requirepass 123456  设置密码</p>
+<p>保护模式启动的2个条件：<br>1、没有使用bind<br>2、没有设置访问密码</p>
+<h3 id="启动redis"><a href="#启动redis" class="headerlink" title="启动redis"></a>启动redis</h3><p>安装后redis-server在/usr/local/bin/目录下</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="symbol">root@</span>qyjy ~]# /usr/local/bin/redis-server ./redis<span class="number">-5.0</span><span class="number">.7</span>/redis.conf</span><br><span class="line"><span class="number">10009</span>:C <span class="number">16</span> Jun <span class="number">2020</span> <span class="number">17</span>:<span class="number">12</span>:<span class="number">11.840</span> # oO0OoO0OoO0Oo Redis <span class="keyword">is</span> starting oO0OoO0OoO0Oo</span><br><span class="line"><span class="number">10009</span>:C <span class="number">16</span> Jun <span class="number">2020</span> <span class="number">17</span>:<span class="number">12</span>:<span class="number">11.840</span> # Redis version=<span class="number">5.0</span><span class="number">.7</span>, bits=<span class="number">64</span>, commit=<span class="number">00000000</span>, modified=<span class="number">0</span>, pid=<span class="number">10009</span>, just started</span><br><span class="line"><span class="number">10009</span>:C <span class="number">16</span> Jun <span class="number">2020</span> <span class="number">17</span>:<span class="number">12</span>:<span class="number">11.840</span> # Configuration loaded</span><br></pre></td></tr></table></figure>
 
-<h4 id="addGetMethods"><a href="#addGetMethods" class="headerlink" title="addGetMethods"></a>addGetMethods</h4><p>addGetMethods(Class&lt;?&gt; cls) 方法，初始化 getMethods 和 getTypes ，通过遍历 getting 方法。代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addGetMethods</span><span class="params">(Class&lt;?&gt; cls)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// &lt;1&gt; 属性与其 getting 方法的映射。</span></span><br><span class="line">    Map&lt;String, List&lt;Method&gt;&gt; conflictingGetters = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">// &lt;2&gt; 获得所有方法</span></span><br><span class="line">    Method[] methods = getClassMethods(cls);</span><br><span class="line">    <span class="comment">// &lt;3&gt; 遍历所有方法</span></span><br><span class="line">    <span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">      <span class="comment">// &lt;3.1&gt; 参数大于 0 ，说明不是 getting 方法，忽略</span></span><br><span class="line">      <span class="keyword">if</span> (method.getParameterTypes().length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      String name = method.getName();</span><br><span class="line">      <span class="comment">// &lt;3.2&gt; 以 get 和 is 方法名开头，说明是 getting 方法</span></span><br><span class="line">      <span class="keyword">if</span> ((name.startsWith(<span class="string">"get"</span>) &amp;&amp; name.length() &gt; <span class="number">3</span>)</span><br><span class="line">          || (name.startsWith(<span class="string">"is"</span>) &amp;&amp; name.length() &gt; <span class="number">2</span>)) &#123;</span><br><span class="line">        <span class="comment">// &lt;3.3&gt; 获得属性</span></span><br><span class="line">        name = PropertyNamer.methodToProperty(name);</span><br><span class="line">        <span class="comment">// &lt;3.4&gt; 添加到 conflictingGetters 中</span></span><br><span class="line">        addMethodConflict(conflictingGetters, name, method);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// &lt;4&gt; 解决 getting 冲突方法</span></span><br><span class="line">    resolveGetterConflicts(conflictingGetters);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试redis"><a href="#测试redis" class="headerlink" title="测试redis"></a>测试redis</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@qyjy ~]# redis-cli -a 123456</span><br><span class="line">Warning: Using a password with <span class="string">'-a'</span> <span class="keyword">or</span> <span class="string">'-u'</span> option on the command line<span class="built_in"> interface </span>may <span class="keyword">not</span> be safe.</span><br><span class="line">127.0.0.1:6379&gt; ping</span><br><span class="line">PONG</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
 
+<h3 id="授权密码重要"><a href="#授权密码重要" class="headerlink" title="授权密码重要"></a>授权密码重要</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@qyjy ~]# redis-cli -a 123456</span><br><span class="line">Warning: Using a password with <span class="string">'-a'</span> <span class="keyword">or</span> <span class="string">'-u'</span> option on the command line<span class="built_in"> interface </span>may <span class="keyword">not</span> be safe.</span><br><span class="line">127.0.0.1:6379&gt; auth 123456</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt;<span class="built_in"> config </span><span class="builtin-name">get</span> requirepass</span><br><span class="line">1) <span class="string">"requirepass"</span></span><br><span class="line">2) <span class="string">"123456"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
 
-<h5 id="getClassMethods"><a href="#getClassMethods" class="headerlink" title="getClassMethods"></a>getClassMethods</h5><p>getClassMethods(Class&lt;?&gt; cls)方法，获得所有方法。代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Method[] getClassMethods(Class&lt;?&gt; cls) &#123;</span><br><span class="line">  <span class="comment">// 每个方法签名与该方法的映射</span></span><br><span class="line">  Map&lt;String, Method&gt; uniqueMethods = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">  <span class="comment">// 循环类，类的父类，类的父类的父类，直到父类为 Object</span></span><br><span class="line">  Class&lt;?&gt; currentClass = cls;</span><br><span class="line">  <span class="keyword">while</span> (currentClass != <span class="keyword">null</span> &amp;&amp; currentClass != Object<span class="class">.<span class="keyword">class</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// &lt;1&gt; 记录当前类定义的方法</span></span><br><span class="line">    addUniqueMethods(uniqueMethods, currentClass.getDeclaredMethods());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// we also need to look for interface methods -</span></span><br><span class="line">    <span class="comment">// because the class may be abstract</span></span><br><span class="line">    <span class="comment">// &lt;2&gt; 记录接口中定义的方法</span></span><br><span class="line">    Class&lt;?&gt;[] interfaces = currentClass.getInterfaces();</span><br><span class="line">    <span class="keyword">for</span> (Class&lt;?&gt; anInterface : interfaces) &#123;</span><br><span class="line">      addUniqueMethods(uniqueMethods, anInterface.getMethods());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获得父类</span></span><br><span class="line">    currentClass = currentClass.getSuperclass();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 转换成 Method 数组返回</span></span><br><span class="line">  Collection&lt;Method&gt; methods = uniqueMethods.values();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> methods.toArray(<span class="keyword">new</span> Method[methods.size()]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&lt;3&gt; 处，会调用 getSignature(Method method) 方法，获得方法签名。代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addUniqueMethods</span><span class="params">(Map&lt;String, Method&gt; uniqueMethods, Method[] methods)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (Method currentMethod : methods) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!currentMethod.isBridge()) &#123;</span><br><span class="line">      <span class="comment">// &lt;3&gt; 获得方法签名</span></span><br><span class="line">      String signature = getSignature(currentMethod);</span><br><span class="line">      <span class="comment">// check to see if the method is already known</span></span><br><span class="line">      <span class="comment">// if it is known, then an extended class must have</span></span><br><span class="line">      <span class="comment">// overridden a method</span></span><br><span class="line">      <span class="comment">// 当 uniqueMethods 不存在时，进行添加</span></span><br><span class="line">      <span class="keyword">if</span> (!uniqueMethods.containsKey(signature)) &#123;</span><br><span class="line">        uniqueMethods.put(signature, currentMethod);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="addSetMethods"><a href="#addSetMethods" class="headerlink" title="addSetMethods"></a>addSetMethods</h4><p>addSetMethods(Class&lt;?&gt; cls) 方法，初始化 setMethods 和 setTypes ，通过遍历 setting 方法。代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addSetMethods</span><span class="params">(Class&lt;?&gt; cls)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 属性与其 setting 方法的映射。</span></span><br><span class="line">  Map&lt;String, List&lt;Method&gt;&gt; conflictingSetters = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">  <span class="comment">// 获得所有方法</span></span><br><span class="line">  Method[] methods = getClassMethods(cls);</span><br><span class="line">  <span class="comment">// 遍历所有方法</span></span><br><span class="line">  <span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">    String name = method.getName();</span><br><span class="line">    <span class="comment">// &lt;1&gt; 方法名为 set 开头</span></span><br><span class="line">    <span class="comment">// 参数数量为 1</span></span><br><span class="line">    <span class="keyword">if</span> (name.startsWith(<span class="string">"set"</span>) &amp;&amp; name.length() &gt; <span class="number">3</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (method.getParameterTypes().length == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">// 获得属性</span></span><br><span class="line">        name = PropertyNamer.methodToProperty(name);</span><br><span class="line">        <span class="comment">// 添加到 conflictingSetters 中</span></span><br><span class="line">        addMethodConflict(conflictingSetters, name, method);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// &lt;2&gt; 解决 setting 冲突方法</span></span><br><span class="line">  resolveSetterConflicts(conflictingSetters);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="addFields"><a href="#addFields" class="headerlink" title="addFields"></a>addFields</h4><p>addFields(Class&lt;?&gt; clazz) 方法，初始化 getMethods + getTypes 和 setMethods + setTypes ，通过遍历 fields 属性。实际上，它是 addGetMethods(…) 和 #addSetMethods(…) 方法的补充，因为有些 field ，不存在对应的 setting 或 getting 方法，所以直接使用对应的 field ，而不是方法。代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addFields</span><span class="params">(Class&lt;?&gt; clazz)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 获得所有 field</span></span><br><span class="line">  Field[] fields = clazz.getDeclaredFields();</span><br><span class="line">  <span class="keyword">for</span> (Field field : fields) &#123;</span><br><span class="line">    <span class="comment">// &lt;1&gt; 添加到 setMethods 和 setTypes 中</span></span><br><span class="line">    <span class="keyword">if</span> (!setMethods.containsKey(field.getName())) &#123;</span><br><span class="line">      <span class="comment">// issue #379 - removed the check for final because JDK 1.5 allows</span></span><br><span class="line">      <span class="comment">// modification of final fields through reflection (JSR-133). (JGB)</span></span><br><span class="line">      <span class="comment">// pr #16 - final static can only be set by the classloader</span></span><br><span class="line">      <span class="keyword">int</span> modifiers = field.getModifiers();</span><br><span class="line">      <span class="keyword">if</span> (!(Modifier.isFinal(modifiers) &amp;&amp; Modifier.isStatic(modifiers))) &#123;</span><br><span class="line">        addSetField(field);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 添加到 getMethods 和 getTypes 中</span></span><br><span class="line">    <span class="keyword">if</span> (!getMethods.containsKey(field.getName())) &#123;</span><br><span class="line">      addGetField(field);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 递归，处理父类</span></span><br><span class="line">  <span class="keyword">if</span> (clazz.getSuperclass() != <span class="keyword">null</span>) &#123;</span><br><span class="line">    addFields(clazz.getSuperclass());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ReflectorFactory"><a href="#ReflectorFactory" class="headerlink" title="ReflectorFactory"></a>ReflectorFactory</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ReflectorFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 是否缓存 Reflector 对象</span></span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">isClassCacheEnabled</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="comment">// 设置是否缓存 Reflector 对象</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setClassCacheEnabled</span><span class="params">(<span class="keyword">boolean</span> classCacheEnabled)</span></span>;</span><br><span class="line">  <span class="comment">// 获取 Reflector 对象</span></span><br><span class="line">  <span class="function">Reflector <span class="title">findForClass</span><span class="params">(Class&lt;?&gt; type)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>未完待续…………</p>
+<h3 id="关掉redis"><a href="#关掉redis" class="headerlink" title="关掉redis:"></a>关掉redis:</h3><p>[root@qyjy ~]# redis-cli -a 123456<br>Warning: Using a password with ‘-a’ or ‘-u’ option on the command line interface may not be safe.<br>127.0.0.1:6379&gt; shotdown<br>(error) ERR unknown command <code>shotdown</code>, with args beginning with:<br>127.0.0.1:6379&gt; SHUTDOWN<br>not connected&gt; exit</p>
+<p>第一种<br>注释掉bind 并把daemonize no<br>第二种<br>设置bind 0.0.0.0 或密码 （保护模式不生效）</p>
+<p>防火墙添加端口<br>[root@localhost bin]# firewall-cmd –query-port=6379/tcp<br>no<br>[root@localhost bin]# firewall-cmd –add-port=6379/tcp<br>success<br>[root@localhost bin]# firewall-cmd –query-port=6379/tcp<br>yes</p>
+<p>端口谁占用了，使用<br>netstat -ltunp</p>
 
       
     </div>
@@ -497,7 +488,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MyBatis/" rel="tag"># MyBatis</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -510,8 +501,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/06/MyBatis-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="next" title="MyBatis-源码分析-调试环境搭建">
-                <i class="fa fa-chevron-left"></i> MyBatis-源码分析-调试环境搭建
+              <a href="/2020/06/16/MySQL%E8%A1%A8%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F%E9%97%AE%E9%A2%98/" rel="next" title="MySQL表名大小写敏感问题">
+                <i class="fa fa-chevron-left"></i> MySQL表名大小写敏感问题
               </a>
             
           </div>
@@ -520,8 +511,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/06/12/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%B4%AD%E7%89%A9%E8%BD%A6/" rel="prev" title="微信小程序-购物车">
-                微信小程序-购物车 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/06/17/SpringBoot-MyBatis%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" rel="prev" title="SpringBoot-MyBatis入门笔记">
+                SpringBoot-MyBatis入门笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -694,7 +685,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reflector"><span class="nav-number">2.</span> <span class="nav-text">Reflector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#addDefaultConstructor"><span class="nav-number">2.1.</span> <span class="nav-text">addDefaultConstructor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#addGetMethods"><span class="nav-number">2.2.</span> <span class="nav-text">addGetMethods</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#getClassMethods"><span class="nav-number">2.2.1.</span> <span class="nav-text">getClassMethods</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#addSetMethods"><span class="nav-number">2.3.</span> <span class="nav-text">addSetMethods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#addFields"><span class="nav-number">2.4.</span> <span class="nav-text">addFields</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReflectorFactory"><span class="nav-number">3.</span> <span class="nav-text">ReflectorFactory</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#centos7-安装redis"><span class="nav-number">2.</span> <span class="nav-text">centos7 安装redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis设置外网访问"><span class="nav-number">3.</span> <span class="nav-text">redis设置外网访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动redis"><span class="nav-number">4.</span> <span class="nav-text">启动redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试redis"><span class="nav-number">5.</span> <span class="nav-text">测试redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权密码重要"><span class="nav-number">6.</span> <span class="nav-text">授权密码重要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关掉redis"><span class="nav-number">7.</span> <span class="nav-text">关掉redis:</span></a></li></ol></div>
             
 
           </div>
