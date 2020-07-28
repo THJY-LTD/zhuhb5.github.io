@@ -73,7 +73,7 @@
 
 
 
-  <meta name="keywords" content="Linux," />
+  <meta name="keywords" content="Linux,Redis," />
 
 
 
@@ -84,16 +84,17 @@
 
 
 
-<meta name="description" content="概述本文要主描述了Centos7-Redis安装">
+<meta name="description" content="概述本文要主描述了Windows10下安装和Centos7-Redis安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Centos7-Redis安装">
 <meta property="og:url" content="https://zhuhb5.github.io/2020/06/16/Centos7-Redis%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="邂逅文森特">
-<meta property="og:description" content="概述本文要主描述了Centos7-Redis安装">
+<meta property="og:description" content="概述本文要主描述了Windows10下安装和Centos7-Redis安装">
 <meta property="article:published_time" content="2020-06-16T08:46:47.000Z">
-<meta property="article:modified_time" content="2020-06-19T09:37:56.625Z">
+<meta property="article:modified_time" content="2020-07-27T01:35:13.630Z">
 <meta property="article:author" content="Vincent">
 <meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
 
 
@@ -374,6 +375,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
             <div class="post-wordcount">
@@ -386,7 +392,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  446 字
+                  783 字
                 </span>
               
 
@@ -402,7 +408,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -423,10 +429,10 @@
       
 
       
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>本文要主描述了Centos7-Redis安装</p>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文要主描述了Windows10下安装和Centos7-Redis安装</p>
 <a id="more"></a>
 
-<h3 id="centos7-安装redis"><a href="#centos7-安装redis" class="headerlink" title="centos7 安装redis"></a>centos7 安装redis</h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># wget http://download.redis.io/releases/redis-5.0.7.tar.gz</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># tar -zxvf redis-5.0.7.tar.gz</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># cd redis-5.0.7</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># yum -y install gcc-c++</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># make</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># make install</span></span><br></pre></td></tr></table></figure>
+<h1 id="Centos7-安装redis"><a href="#Centos7-安装redis" class="headerlink" title="Centos7 安装redis"></a>Centos7 安装redis</h1><h2 id="在线安装，需要联网"><a href="#在线安装，需要联网" class="headerlink" title="在线安装，需要联网"></a>在线安装，需要联网</h2><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># wget http://download.redis.io/releases/redis-5.0.7.tar.gz</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># tar -zxvf redis-5.0.7.tar.gz</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># cd redis-5.0.7</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># yum -y install gcc-c++</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># make</span></span><br><span class="line">[root<span class="symbol">@qyjy</span> ~]<span class="meta"># make install</span></span><br></pre></td></tr></table></figure>
 <p>如果make失败需要执行make distclean<br>make install</p>
 <h3 id="redis设置外网访问"><a href="#redis设置外网访问" class="headerlink" title="redis设置外网访问"></a>redis设置外网访问</h3><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="symbol">root@</span>qyjy ~]# vim redis<span class="number">-5.0</span><span class="number">.7</span>/redis.conf</span><br></pre></td></tr></table></figure>
 <p>bind:0.0.0.0 设置所有ip都能访问，127.0.0.1 是只绑定本地<br>daemonize yes 设置后台启动<br>protected no<br>requirepass 123456  设置密码</p>
@@ -434,14 +440,35 @@
 <h3 id="启动redis"><a href="#启动redis" class="headerlink" title="启动redis"></a>启动redis</h3><p>安装后redis-server在/usr/local/bin/目录下</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="symbol">root@</span>qyjy ~]# /usr/local/bin/redis-server ./redis<span class="number">-5.0</span><span class="number">.7</span>/redis.conf</span><br><span class="line"><span class="number">10009</span>:C <span class="number">16</span> Jun <span class="number">2020</span> <span class="number">17</span>:<span class="number">12</span>:<span class="number">11.840</span> # oO0OoO0OoO0Oo Redis <span class="keyword">is</span> starting oO0OoO0OoO0Oo</span><br><span class="line"><span class="number">10009</span>:C <span class="number">16</span> Jun <span class="number">2020</span> <span class="number">17</span>:<span class="number">12</span>:<span class="number">11.840</span> # Redis version=<span class="number">5.0</span><span class="number">.7</span>, bits=<span class="number">64</span>, commit=<span class="number">00000000</span>, modified=<span class="number">0</span>, pid=<span class="number">10009</span>, just started</span><br><span class="line"><span class="number">10009</span>:C <span class="number">16</span> Jun <span class="number">2020</span> <span class="number">17</span>:<span class="number">12</span>:<span class="number">11.840</span> # Configuration loaded</span><br></pre></td></tr></table></figure>
 
-<h3 id="测试redis"><a href="#测试redis" class="headerlink" title="测试redis"></a>测试redis</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@qyjy ~]# redis-cli -a 123456</span><br><span class="line">Warning: Using a password with <span class="string">'-a'</span> <span class="keyword">or</span> <span class="string">'-u'</span> option on the command line<span class="built_in"> interface </span>may <span class="keyword">not</span> be safe.</span><br><span class="line">127.0.0.1:6379&gt; ping</span><br><span class="line">PONG</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="测试redis"><a href="#测试redis" class="headerlink" title="测试redis"></a>测试redis</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@qyjy ~]<span class="comment"># redis-cli -a 123456 -n 10 // -n参数表示连接第几个数据库</span></span><br><span class="line">[root@qyjy ~]<span class="comment"># redis-cli -a 123456</span></span><br><span class="line"><span class="symbol">Warning:</span> Using a password with <span class="string">'-a'</span> <span class="keyword">or</span> <span class="string">'-u'</span> option on the command line interface may <span class="keyword">not</span> be safe.</span><br><span class="line"><span class="meta">127.0.0.1:6379&gt;</span> ping</span><br><span class="line">PONG</span><br><span class="line"><span class="meta">127.0.0.1:6379&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="授权密码重要"><a href="#授权密码重要" class="headerlink" title="授权密码重要"></a>授权密码重要</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@qyjy ~]# redis-cli -a 123456</span><br><span class="line">Warning: Using a password with <span class="string">'-a'</span> <span class="keyword">or</span> <span class="string">'-u'</span> option on the command line<span class="built_in"> interface </span>may <span class="keyword">not</span> be safe.</span><br><span class="line">127.0.0.1:6379&gt; auth 123456</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt;<span class="built_in"> config </span><span class="builtin-name">get</span> requirepass</span><br><span class="line">1) <span class="string">"requirepass"</span></span><br><span class="line">2) <span class="string">"123456"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="关掉redis"><a href="#关掉redis" class="headerlink" title="关掉redis:"></a>关掉redis:</h3><p>[root@qyjy ~]# redis-cli -a 123456<br>Warning: Using a password with ‘-a’ or ‘-u’ option on the command line interface may not be safe.<br>127.0.0.1:6379&gt; shotdown<br>(error) ERR unknown command <code>shotdown</code>, with args beginning with:<br>127.0.0.1:6379&gt; SHUTDOWN<br>not connected&gt; exit</p>
+<h3 id="关掉redis"><a href="#关掉redis" class="headerlink" title="关掉redis"></a>关掉redis</h3><p>[root@qyjy ~]# redis-cli -a 123456<br>Warning: Using a password with ‘-a’ or ‘-u’ option on the command line interface may not be safe.<br>127.0.0.1:6379&gt; shotdown<br>(error) ERR unknown command <code>shotdown</code>, with args beginning with:<br>127.0.0.1:6379&gt; SHUTDOWN<br>not connected&gt; exit</p>
 <p>第一种<br>注释掉bind 并把daemonize no<br>第二种<br>设置bind 0.0.0.0 或密码 （保护模式不生效）</p>
 <p>防火墙添加端口<br>[root@localhost bin]# firewall-cmd –query-port=6379/tcp<br>no<br>[root@localhost bin]# firewall-cmd –add-port=6379/tcp<br>success<br>[root@localhost bin]# firewall-cmd –query-port=6379/tcp<br>yes</p>
 <p>端口谁占用了，使用<br>netstat -ltunp</p>
+<h1 id="docker安装redis"><a href="#docker安装redis" class="headerlink" title="docker安装redis"></a>docker安装redis</h1><ol>
+<li><p>查看可用的 Redis 版本<br>$ docker search  redis</p>
+</li>
+<li><p>取最新版的 Redis 镜像<br>$ docker pull redis:latest</p>
+</li>
+<li><p>查看本地镜像<br>$ docker images</p>
+</li>
+<li><p>运行容器<br>$ docker run -itd –name redis-test -p 6379:6379 redis</p>
+</li>
+<li><p>安装成功<br>最后我们可以通过 docker ps 命令查看容器的运行信息：</p>
+</li>
+<li><p>接着我们通过 redis-cli 连接测试使用 redis 服务。<br>$ docker exec -it redis-test /bin/bash</p>
+</li>
+</ol>
+<p><strong>附</strong></p>
+<h1 id="Windows-安装Redis"><a href="#Windows-安装Redis" class="headerlink" title="Windows 安装Redis"></a>Windows 安装Redis</h1><h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p><a href="https://github.com/tporadowski/redis/releases。" target="_blank" rel="noopener">https://github.com/tporadowski/redis/releases。</a><br>Redis 支持 32 位和 64 位。这个需要根据你系统平台的实际情况选择，这里我们下载 Redis-x64-xxx.zip压缩包到 C 盘，解压后，将文件夹重新命名为 redis。</p>
+<h2 id="运行Redis"><a href="#运行Redis" class="headerlink" title="运行Redis"></a>运行Redis</h2><p>打开一个 cmd 窗口 使用 cd 命令切换目录到 C:\redis 运行：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">redis-server</span><span class="selector-class">.exe</span> <span class="selector-tag">redis</span><span class="selector-class">.windows</span><span class="selector-class">.conf</span></span><br></pre></td></tr></table></figure>
+<p>如果想方便的话，可以把 redis 的路径加到系统的环境变量里，这样就省得再输路径了，后面的那个 redis.windows.conf 可以省略，如果省略，会启用默认的。<br>这时候另启一个 cmd 窗口，原来的不要关闭，不然就无法访问服务端了。<br>切换到 redis 目录下运行:</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli.exe -h <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> -p <span class="number">6379</span></span><br></pre></td></tr></table></figure>
+<p>安装完毕</p>
 
       
     </div>
@@ -489,6 +516,8 @@
         <div class="post-tags">
           
             <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/Redis/" rel="tag"># Redis</a>
           
         </div>
       
@@ -620,7 +649,7 @@ var jiathis_config={
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -631,7 +660,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -642,7 +671,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -685,7 +714,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#centos7-安装redis"><span class="nav-number">2.</span> <span class="nav-text">centos7 安装redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis设置外网访问"><span class="nav-number">3.</span> <span class="nav-text">redis设置外网访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动redis"><span class="nav-number">4.</span> <span class="nav-text">启动redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试redis"><span class="nav-number">5.</span> <span class="nav-text">测试redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权密码重要"><span class="nav-number">6.</span> <span class="nav-text">授权密码重要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关掉redis"><span class="nav-number">7.</span> <span class="nav-text">关掉redis:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Centos7-安装redis"><span class="nav-number">2.</span> <span class="nav-text">Centos7 安装redis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在线安装，需要联网"><span class="nav-number">2.1.</span> <span class="nav-text">在线安装，需要联网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#redis设置外网访问"><span class="nav-number">2.1.1.</span> <span class="nav-text">redis设置外网访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动redis"><span class="nav-number">2.1.2.</span> <span class="nav-text">启动redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试redis"><span class="nav-number">2.1.3.</span> <span class="nav-text">测试redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权密码重要"><span class="nav-number">2.1.4.</span> <span class="nav-text">授权密码重要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关掉redis"><span class="nav-number">2.1.5.</span> <span class="nav-text">关掉redis</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker安装redis"><span class="nav-number">3.</span> <span class="nav-text">docker安装redis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows-安装Redis"><span class="nav-number">4.</span> <span class="nav-text">Windows 安装Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载地址"><span class="nav-number">4.1.</span> <span class="nav-text">下载地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行Redis"><span class="nav-number">4.2.</span> <span class="nav-text">运行Redis</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -710,17 +739,6 @@ var jiathis_config={
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Vincent</span>
-
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-      <span class="post-meta-item-text">Site words total count&#58;</span>
-    
-    <span title="Site words total count">24.2k</span>
-  
 </div>
 
 
@@ -732,6 +750,14 @@ var jiathis_config={
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
 
 
 
