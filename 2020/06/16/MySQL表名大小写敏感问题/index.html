@@ -438,7 +438,7 @@
 <p>找了一些资料解决了这个问题，记录一下。</p>
 <h3 id="变量lower-case-table-names"><a href="#变量lower-case-table-names" class="headerlink" title="变量lower_case_table_names"></a>变量lower_case_table_names</h3><p>为什么本地开发没问题? 因为本地的windows开发环境，默认是大小写不敏感。而服务器环境的linux是敏感的。<br>本地windows我们执行命令，查看自己电脑中的mysql系统变量可以看到：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%lower_case_table_names%'</span>;</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/06/16/MySQL%E8%A1%A8%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F%E9%97%AE%E9%A2%98/01.jpg" alt="01"><br>值为1，表示是大小写不敏感，而linux环境的mysql是0.</p>
+<p><img src="01.jpg" alt="01"><br>值为1，表示是大小写不敏感，而linux环境的mysql是0.</p>
 <h3 id="修改变量lower-case-table-names"><a href="#修改变量lower-case-table-names" class="headerlink" title="修改变量lower-case-table-names"></a>修改变量lower-case-table-names</h3><ol>
 <li>打开mysql配置文件my.cnf <figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@qyjy</span> bin]<span class="meta"># vim /etc/my.cnf</span></span><br></pre></td></tr></table></figure></li>
 <li>在[mysqld]节点下添加 lower-case-table-names=1</li>
@@ -631,7 +631,7 @@ var jiathis_config={
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -642,7 +642,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -653,7 +653,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -716,7 +716,7 @@ var jiathis_config={
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

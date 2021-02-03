@@ -90,7 +90,7 @@
 <meta property="og:url" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="邂逅文森特">
 <meta property="og:description" content="概述本文主要是 MyBatis 常见的知识点总结">
-<meta property="og:image" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/01.png">
+<meta property="og:image" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/2020-06-05-MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/01.png">
 <meta property="og:image" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/02.png">
 <meta property="og:image" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/03.png">
 <meta property="og:image" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/04.png">
@@ -100,7 +100,7 @@
 <meta property="article:author" content="Vincent">
 <meta property="article:tag" content="MyBatis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/01.png">
+<meta name="twitter:image" content="https://zhuhb5.github.io/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/2020-06-05-MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/01.png">
 
 
 
@@ -445,8 +445,8 @@
 <li>执行失败，则使用 SqlSession 回滚事务</li>
 <li>最终，关闭会话</li>
 </ol>
-<h3 id="和-的区别是什么？"><a href="#和-的区别是什么？" class="headerlink" title="#{}和 ${} 的区别是什么？"></a><font color="green">#{}</font>和 <font color="green">${}</font> 的区别是什么？</h3><ul>
-<li>${} 是Properties 文件中的变量占位符，它可以用于XML标签属性值和SQL内部，属于字符串替换。例如将 ${driver} 会被静态替换为 <font color="green">com.mysql.jdbc.driver</font><figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"UNPOOLED"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;driver&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;url&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;username&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>/&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
+<h3 id="和-的区别是什么？"><a href="#和-的区别是什么？" class="headerlink" title="#{}和 ${} 的区别是什么？"></a><font color=green>#{}</font>和 <font color=green>${}</font> 的区别是什么？</h3><ul>
+<li>${} 是Properties 文件中的变量占位符，它可以用于XML标签属性值和SQL内部，属于字符串替换。例如将 ${driver} 会被静态替换为 <font color=green>com.mysql.jdbc.driver</font><figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"UNPOOLED"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;driver&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;url&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;username&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>/&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
 <li>${} 也可以对传递进来的参数原样拼接在 SQL 中。代码如下：<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">select</span> id="getSubject3" parameterType="Integer" resultType="Subject"&gt;</span><br><span class="line">    <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> subject</span><br><span class="line">    <span class="keyword">WHERE</span> id = $&#123;id&#125;</span><br><span class="line">&lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
 实际场景下，不推荐这么做。因为，可能有 SQL 注入的风险。</li>
 <li>#{} 是 SQL 的参数占位符，Mybatis 会将 SQL 中的 #{} 替换为 ? 号，在 SQL 执行前会使用 PreparedStatement 的参数设置方法，按序给 SQL 的 ? 号占位符设置参数值，比如 ps.setInt(0, parameterValue) 。 所以，#{} 是预编译处理，可以有效防止 SQL 注入，提高系统安全性。</li>
@@ -461,7 +461,7 @@
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;setting <span class="type">name</span>="logImpl" <span class="keyword">value</span>="LOG4J"/&gt;</span><br><span class="line">    &lt;setting <span class="type">name</span>="mapUnderscoreToCamelCase" <span class="keyword">value</span>="true" /&gt;</span><br><span class="line">&lt;/settings&gt;</span><br></pre></td></tr></table></figure>
 <p>也就说，约定大于配置。非常推荐！</p>
 </li>
-<li><p>第三种，通过 <resultMap> 来映射字段名和实体类属性名的一一对应的关系。代码如下：</resultMap></p>
+<li><p>第三种，通过 <resultMap> 来映射字段名和实体类属性名的一一对应的关系。代码如下：</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;resultMap type=<span class="string">"me.gacl.domain.Order"</span> <span class="built_in">id</span>=”OrderResultMap”&gt; </span><br><span class="line">    &lt;!–- 用 <span class="built_in">id</span> 属性来映射主键字段 -–&gt; </span><br><span class="line">    &lt;<span class="built_in">id</span> <span class="keyword">property</span>=<span class="string">"id"</span> column=<span class="string">"order_id"</span>&gt; </span><br><span class="line">    &lt;!–- 用 <span class="literal">result</span> 属性来映射非主键字段，<span class="keyword">property</span> 为实体类属性名，column 为数据表中的属性 -–&gt; </span><br><span class="line">    &lt;<span class="literal">result</span> <span class="keyword">property</span>=<span class="string">"orderNo"</span> column =<span class="string">"order_no"</span> /&gt; </span><br><span class="line">    &lt;<span class="literal">result</span> <span class="keyword">property</span>=<span class="string">"price"</span> column=<span class="string">"order_price"</span> /&gt; </span><br><span class="line">&lt;/resultMap&gt;</span><br><span class="line"></span><br><span class="line">&lt;select <span class="built_in">id</span>=<span class="string">"getOrder"</span> parameterType=<span class="string">"Integer"</span> resultMap=<span class="string">"OrderResultMap"</span>&gt;</span><br><span class="line">    SELECT * </span><br><span class="line">    FROM orders </span><br><span class="line">    WHERE order_id = <span class="comment">#&#123;id&#125;</span></span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure></li>
 <li><p><em>此处 SELECT * 仅仅作为示例只用，实际场景下，千万千万千万不要这么干。用多少字段，查询多少字段。*</em>  </p>
 </li>
@@ -476,7 +476,7 @@
 <li>接口方法内的参数，就是传递给 SQL 的参数。<br>Mapper 接口是没有实现类的，当调用接口方法时，接口全限名 + 方法名拼接字符串作为 key 值，可唯一定位一个对应的 MappedStatement 。举例：com.mybatis3.mappers.StudentDao.findStudentById ，可以唯一找到 “namespace” 为 com.mybatis3.mappers.StudentDao 下面 “id” 为 findStudentById 的 MappedStatement 。</li>
 </ul>
 <p><code>总结来说，在 Mybatis 中，每一个 &lt;select /&gt;、&lt;insert /&gt;、&lt;update /&gt;、&lt;delete /&gt; 标签，都会被解析为一个 MappedStatement 对象。另外，Mapper 接口的实现类，通过 MyBatis 使用 JDK Proxy 自动生成其代理对象 Proxy ，而代理对象 Proxy 会拦截接口方法，从而“调用”对应的 MappedStatement 方法，最终执行 SQL ，返回执行结果。整体流程如下图：</code></p>
-<p><img src="/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/01.png" alt="01"></p>
+<p><img src="2020-06-05-MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/01.png" alt="01"></p>
 <ul>
 <li>其中，SqlSession 在调用 Executor 之前，会获得对应的 MappedStatement 方法。例如：DefaultSqlSession#select(String statement, Object parameter, RowBounds rowBounds, ResultHandler handler) 方法，代码如下：</li>
 </ul>
@@ -523,7 +523,7 @@
 </li>
 </ul>
 <h3 id="Mybatis-是否可以映射-Enum-枚举类？"><a href="#Mybatis-是否可以映射-Enum-枚举类？" class="headerlink" title="Mybatis 是否可以映射 Enum 枚举类？"></a>Mybatis 是否可以映射 Enum 枚举类？</h3><p>Mybatis 可以映射枚举类，对应的实现类为 EnumTypeHandler 或 EnumOrdinalTypeHandler 。</p>
-<p>EnumTypeHandler ，基于 Enum.name 属性( String )。默认。<br>EnumOrdinalTypeHandler ，基于 Enum.ordinal 属性( int )。可通过 <setting name="defaultEnumTypeHandler" value="EnumOrdinalTypeHandler"> 来设置。<br>当然，实际开发场景，我们很少使用 Enum 类型，更加的方式是，代码如下：</setting></p>
+<p>EnumTypeHandler ，基于 Enum.name 属性( String )。默认。<br>EnumOrdinalTypeHandler ，基于 Enum.ordinal 属性( int )。可通过 <setting name="defaultEnumTypeHandler" value="EnumOrdinalTypeHandler" /> 来设置。<br>当然，实际开发场景，我们很少使用 Enum 类型，更加的方式是，代码如下：</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">Dog</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> static <span class="keyword">final</span> <span class="built_in">int</span> STATUS_GOOD = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> static <span class="keyword">final</span> <span class="built_in">int</span> STATUS_BETTER = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">public</span> static <span class="keyword">final</span> <span class="built_in">int</span> STATUS_BEST = <span class="number">3</span>；</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">int</span> status;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>并且，不单可以映射枚举类，Mybatis 可以映射任何对象到表的一列上。映射方式为自定义一个 TypeHandler 类，实现 TypeHandler 的#setParameter(…) 和 #getResult(…) 接口方法。</p>
 <p>TypeHandler 有两个作用：</p>
@@ -543,14 +543,14 @@
 对于这种方式，需要保证单条 SQL 不超过语句的最大限制 max_allowed_packet 大小，默认为 1 M 。<br>这两种方式的性能对比，可以看看 <a href="https://www.jianshu.com/p/cce617be9f9e" target="_blank" rel="noopener">《[实验]mybatis批量插入方式的比较》 </a>。</li>
 </ul>
 <h3 id="介绍-MyBatis-的一级缓存和二级缓存的概念和实现原理？"><a href="#介绍-MyBatis-的一级缓存和二级缓存的概念和实现原理？" class="headerlink" title="介绍 MyBatis 的一级缓存和二级缓存的概念和实现原理？"></a>介绍 MyBatis 的一级缓存和二级缓存的概念和实现原理？</h3><h3 id="Mybatis-是否支持延迟加载？如果支持，它的实现原理是什么？"><a href="#Mybatis-是否支持延迟加载？如果支持，它的实现原理是什么？" class="headerlink" title="Mybatis 是否支持延迟加载？如果支持，它的实现原理是什么？"></a>Mybatis 是否支持延迟加载？如果支持，它的实现原理是什么？</h3><p>Mybatis 仅支持 association 关联对象和 collection 关联集合对象的延迟加载。其中，association 指的就是一对一，collection 指的就是一对多查询。</p>
-<p>在 Mybatis 配置文件中，可以配置 <setting name="lazyLoadingEnabled" value="true"> 来启用延迟加载的功能。默认情况下，延迟加载的功能是关闭的。</setting></p>
+<p>在 Mybatis 配置文件中，可以配置 <setting name="lazyLoadingEnabled" value="true" /> 来启用延迟加载的功能。默认情况下，延迟加载的功能是关闭的。</p>
 <p>它的原理是，使用 CGLIB 或 Javassist( 默认 ) 创建目标对象的代理对象。当调用代理对象的延迟加载属性的 getting 方法时，进入拦截器方法。比如调用 a.getB().getName() 方法，进入拦截器的 invoke(…) 方法，发现 a.getB() 需要延迟加载时，那么就会单独发送事先保存好的查询关联 B 对象的 SQL ，把 B 查询上来，然后调用a.setB(b) 方法，于是 a 对象 b 属性就有值了，接着完成a.getB().getName() 方法的调用。这就是延迟加载的基本原理。</p>
 <p>当然了，不光是 Mybatis，几乎所有的包括 Hibernate 在内，支持延迟加载的原理都是一样的。</p>
 <h3 id="Mybatis-能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"><a href="#Mybatis-能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。" class="headerlink" title="Mybatis 能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"></a>Mybatis 能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。</h3><p>能，Mybatis 不仅可以执行一对一、一对多的关联查询，还可以执行多对一，多对多的关联查询。</p>
 <ul>
-<li><p>一对多<br>用户级联文章在JavaBean中的编写方式,这就是一对多在JavaBean中的配置<br><img src="/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/02.png" alt="02.png"><br>Mybatis的Mapper该如何编写一对多?很简单,就是在resultMap标签中配置<collection>标签,用来存储查询到的文章列表,注意posts代表的是用户实体的文章List集合<br><img src="/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/03.png" alt="03.png"></collection></p>
+<li><p>一对多<br>用户级联文章在JavaBean中的编写方式,这就是一对多在JavaBean中的配置<br><img src="02.png" alt="02.png"><br>Mybatis的Mapper该如何编写一对多?很简单,就是在resultMap标签中配置<collection>标签,用来存储查询到的文章列表,注意posts代表的是用户实体的文章List集合<br><img src="03.png" alt="03.png"></p>
 </li>
-<li><p>多对一<br>文章级联用户在JavaBean中的编写方式,这是多对一在JavaBean中的配置<br><img src="/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/04.png" alt="04.png"><br>Mybatis的Mapper该如何编写多对一?很简单,就是在resultMap标签中配置<association></association>标签关联所属的用户实体<br><img src="/2020/06/05/MyBatis-%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/05.png" alt="05.png"></p>
+<li><p>多对一<br>文章级联用户在JavaBean中的编写方式,这是多对一在JavaBean中的配置<br><img src="04.png" alt="04.png"><br>Mybatis的Mapper该如何编写多对一?很简单,就是在resultMap标签中配置<association></association>标签关联所属的用户实体<br><img src="05.png" alt="05.png"></p>
 </li>
 </ul>
 <h3 id="简述-Mybatis-的插件运行原理？以及如何编写一个插件？"><a href="#简述-Mybatis-的插件运行原理？以及如何编写一个插件？" class="headerlink" title="简述 Mybatis 的插件运行原理？以及如何编写一个插件？"></a>简述 Mybatis 的插件运行原理？以及如何编写一个插件？</h3><p>Mybatis 仅可以编写针对 ParameterHandler、ResultSetHandler、StatementHandler、Executor 这 4 种接口的插件。</p>
@@ -573,7 +573,7 @@
 <li>sql直接优化上，mybatis要比hibernate方便很多<br>由于mybatis的sql都是写在xml里，因此优化sql比hibernate方便很多。而hibernate的sql很多都是自动生成的，无法直接维护sql；虽有hql，但功能还是不及sql强大，见到报表等变态需求时，hql也歇菜，也就是说hql是有局限的；hibernate虽然也支持原生sql，但开发模式上却与orm不同，需要转换思维，因此使用上不是非常方便。总之写sql的灵活度上hibernate不及mybatis。</li>
 </ul>
 <h3 id="JDBC-编程有哪些不足之处，MyBatis是如何解决这些问题的？"><a href="#JDBC-编程有哪些不足之处，MyBatis是如何解决这些问题的？" class="headerlink" title="JDBC 编程有哪些不足之处，MyBatis是如何解决这些问题的？"></a>JDBC 编程有哪些不足之处，MyBatis是如何解决这些问题的？</h3><p>问题一：SQL 语句写在代码中造成代码不易维护，且代码会比较混乱。<br>解决方式：将 SQL 语句配置在 Mapper XML 文件中，与 Java 代码分离。</p>
-<p>问题二：根据参数不同，拼接不同的 SQL 语句非常麻烦。例如 SQL 语句的 WHERE 条件不一定，可能多也可能少，占位符需要和参数一一对应。<br>解决方式：MyBatis 提供 <where>、<if> 等等动态语句所需要的标签，并支持 OGNL 表达式，简化了动态 SQL 拼接的代码，提升了开发效率。</if></where></p>
+<p>问题二：根据参数不同，拼接不同的 SQL 语句非常麻烦。例如 SQL 语句的 WHERE 条件不一定，可能多也可能少，占位符需要和参数一一对应。<br>解决方式：MyBatis 提供 <where />、<if /> 等等动态语句所需要的标签，并支持 OGNL 表达式，简化了动态 SQL 拼接的代码，提升了开发效率。</p>
 <p>问题三，对结果集解析麻烦，SQL 变化可能导致解析代码变化，且解析前需要遍历。<br>解决方式：Mybatis 自动将 SQL 执行结果映射成 Java 对象。</p>
 <p>问题四，数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。<br>解决方式：在 mybatis-config.xml 中，配置数据链接池，使用连接池管理数据库链接。<br>当然，即使不使用 MyBatis ，也可以使用数据库连接池。<br>另外，MyBatis 默认提供了数据库连接池的实现，只是说，因为其它开源的数据库连接池性能更好，所以一般很少使用 MyBatis 自带的连接池实现。</p>
 <h3 id="Mybatis-映射文件中，如果-A-标签通过-include-引用了B标签的内容，请问，B-标签能否定义在-A-标签的后面，还是说必须定义在A标签的前面？"><a href="#Mybatis-映射文件中，如果-A-标签通过-include-引用了B标签的内容，请问，B-标签能否定义在-A-标签的后面，还是说必须定义在A标签的前面？" class="headerlink" title="Mybatis 映射文件中，如果 A 标签通过 include 引用了B标签的内容，请问，B 标签能否定义在 A 标签的后面，还是说必须定义在A标签的前面？"></a>Mybatis 映射文件中，如果 A 标签通过 include 引用了B标签的内容，请问，B 标签能否定义在 A 标签的后面，还是说必须定义在A标签的前面？</h3><p>虽然 Mybatis 解析 XML 映射文件是按照顺序解析的。但是，被引用的 B 标签依然可以定义在任何地方，Mybatis 都可以正确识别。也就是说，无需按照顺序，进行定义。</p>
@@ -753,7 +753,7 @@ var jiathis_config={
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -764,7 +764,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -775,7 +775,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -838,7 +838,7 @@ var jiathis_config={
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

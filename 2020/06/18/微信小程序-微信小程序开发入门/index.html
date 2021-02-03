@@ -490,9 +490,9 @@
 </ul>
 <h6 id="云存储模块"><a href="#云存储模块" class="headerlink" title="云存储模块"></a>云存储模块</h6><p>图片、文件上传，使用的是七牛、阿里云、腾讯云的存储服务，不能上传到本地服务器。上传到本地服务器，不利于维护，访问速度慢、占用服务器带宽等缺点，所以推荐使用云存储服务。<br>由于没有购买云存储服务器，所以我采用本地服务器。用nginx做代理。</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">  <span class="attribute">server_name</span>  <span class="number">47</span>.<span class="number">113</span>.<span class="number">108</span>.xxx;</span><br><span class="line"></span><br><span class="line">  <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">  <span class="attribute">location</span> / &#123;</span><br><span class="line">      <span class="attribute">alias</span>  /data/images/;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="发布阶段"><a href="#发布阶段" class="headerlink" title="发布阶段"></a>发布阶段</h3><h4 id="代码审核与发布"><a href="#代码审核与发布" class="headerlink" title="代码审核与发布"></a>代码审核与发布</h4><p>微信开发工具 点击上传<br><img src="/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/01.jpg" alt="01"></p>
-<h4 id="提交审核"><a href="#提交审核" class="headerlink" title="提交审核"></a>提交审核</h4><p><a href="https://mp.weixin.qq.com/wxamp/wacodepage/getcodepage?token=625584081&lang=zh_CN" target="_blank" rel="noopener">版本管理</a>, 小程序一般审核需要1到3天<br><img src="/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/02.jpg" alt="02"></p>
-<h4 id="代码发布"><a href="#代码发布" class="headerlink" title="代码发布"></a>代码发布</h4><p>代码审核通过，需要开发者手动点击发布，小程序才会发布到线上提供服务。<br><img src="/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/03.jpg" alt="03"></p>
+<h3 id="发布阶段"><a href="#发布阶段" class="headerlink" title="发布阶段"></a>发布阶段</h3><h4 id="代码审核与发布"><a href="#代码审核与发布" class="headerlink" title="代码审核与发布"></a>代码审核与发布</h4><p>微信开发工具 点击上传<br><img src="01.jpg" alt="01"></p>
+<h4 id="提交审核"><a href="#提交审核" class="headerlink" title="提交审核"></a>提交审核</h4><p><a href="https://mp.weixin.qq.com/wxamp/wacodepage/getcodepage?token=625584081&lang=zh_CN" target="_blank" rel="noopener">版本管理</a>, 小程序一般审核需要1到3天<br><img src="02.jpg" alt="02"></p>
+<h4 id="代码发布"><a href="#代码发布" class="headerlink" title="代码发布"></a>代码发布</h4><p>代码审核通过，需要开发者手动点击发布，小程序才会发布到线上提供服务。<br><img src="03.jpg" alt="03"></p>
 <h3 id="生产环境部署"><a href="#生产环境部署" class="headerlink" title="生产环境部署"></a>生产环境部署</h3><ul>
 <li><p>maven 打包</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn <span class="keyword">package</span> <span class="title">-P prod</span></span><br></pre></td></tr></table></figure></li>
@@ -507,7 +507,7 @@
 <li><a href="http://localhost:4000/2020/06/18/Centos7-Nginx%E5%AE%89%E8%A3%85/" target="_blank" rel="noopener">Centos7-Nginx安装</a></li>
 <li><a href="http://localhost:4000/2020/06/16/Centos7-Mysql%E5%AE%89%E8%A3%85/" target="_blank" rel="noopener">Centos7-MySql安装</a></li>
 </ul>
-<p>测试服务器配置：1核心2G 40G<br><img src="/2020/06/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/04.jpg" alt="04"></p>
+<p>测试服务器配置：1核心2G 40G<br><img src="04.jpg" alt="04"></p>
 
       
     </div>
@@ -686,7 +686,7 @@ var jiathis_config={
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -697,7 +697,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -708,7 +708,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -771,7 +771,7 @@ var jiathis_config={
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
